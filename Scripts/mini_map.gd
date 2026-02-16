@@ -2,16 +2,15 @@ extends Node2D
 
 var map : Map
 
-var room_size = 50
-var space = 10
+var room_size = 80
+var space = 15
 
 @onready var texture_rect: TextureRect = $CanvasLayer/TextureRect
-@onready var player_icon: Sprite2D = $CanvasLayer/PlayerIcon
 
 func generate_minimap() -> void:
 	var rooms = map.rooms
 	
-	var map_image : Image = Image.create(310, 310, false, Image.FORMAT_RGB16)
+	var map_image : Image = Image.create(490, 490, false, Image.FORMAT_RGB16)
 	map_image.fill(Color.WHITE)
 	
 	for i in range(rooms.size()):
@@ -25,8 +24,8 @@ func generate_minimap() -> void:
 				room_color = Color.CORNFLOWER_BLUE
 			
 			if map.current_room == rooms[i][j]:
-				player_icon.position.x += x
-				player_icon.position.y += y
+				pass
+				#icon ayarla
 			
 			map_image.fill_rect(Rect2i(x, y, room_size, room_size), room_color)
 	
