@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cao3g4dy76msx"]
+
+[ext_resource type="PackedScene" uid="uid://c8eh4pqxs4pdn" path="res://Scenes/player.tscn" id="1_q8hp3"]
+[ext_resource type="Texture2D" uid="uid://d0o76s5tq1fqd" path="res://Assets/floor1.png" id="2_e80bh"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_e80bh"]
+normal = Vector2(-1, 8.7422755e-08)
+
+[node name="RoomScene" type="Node2D" unique_id=1129382902]
+
+[node name="MapBorders" type="StaticBody2D" parent="." unique_id=2057759491]
+
+[node name="upper" type="CollisionShape2D" parent="MapBorders" unique_id=971193697]
+position = Vector2(0, -1000)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_e80bh")
+
+[node name="lower" type="CollisionShape2D" parent="MapBorders" unique_id=1100147213]
+position = Vector2(0, 1000)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_e80bh")
+
+[node name="right" type="CollisionShape2D" parent="MapBorders" unique_id=189988936]
+position = Vector2(1000, 0)
+shape = SubResource("WorldBoundaryShape2D_e80bh")
+
+[node name="left" type="CollisionShape2D" parent="MapBorders" unique_id=1868652719]
+position = Vector2(-1000, 0)
+rotation = 3.1415927
+shape = SubResource("WorldBoundaryShape2D_e80bh")
+
+[node name="Player" parent="." unique_id=946385579 instance=ExtResource("1_q8hp3")]
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1485814558]
+limit_left = -1300
+limit_top = -1300
+limit_right = 1300
+limit_bottom = 1300
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1250523739]
+z_index = -100
+offset_left = -952.0
+offset_top = -536.0
+offset_right = 960.0
+offset_bottom = 536.0
+texture = ExtResource("2_e80bh")
+stretch_mode = 1
