@@ -2,8 +2,65 @@
 
 [ext_resource type="Script" uid="uid://cd5tikxc35l21" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://bicjuntfh5e7m" path="res://icon.svg" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://7gpps5mm7cnc" path="res://Scripts/States/state_machine.gd" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://cghas6541l4nd" path="res://Scripts/States/player_states/idle.gd" id="4_vgqql"]
+[ext_resource type="Script" uid="uid://q6ro8mu4o6gk" path="res://Scripts/States/player_states/run.gd" id="5_fkybt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0iea"]
+
+[sub_resource type="Animation" id="Animation_fkybt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_x3wgy"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3smsa"]
+resource_name = "run"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0044930056, 0.28272614, 0.9091159, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8erm5"]
+_data = {
+&"RESET": SubResource("Animation_fkybt"),
+&"idle": SubResource("Animation_x3wgy"),
+&"run": SubResource("Animation_3smsa")
+}
 
 [node name="Player" type="CharacterBody2D" unique_id=946385579 groups=["player"]]
 script = ExtResource("1_cvnsp")
@@ -13,3 +70,28 @@ texture = ExtResource("1_v0iea")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=654266018]
 shape = SubResource("RectangleShape2D_v0iea")
+
+[node name="StateMachine" type="Node" parent="." unique_id=2099382809 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_6t5aa")
+initial_state = NodePath("idle")
+
+[node name="idle" type="Node" parent="StateMachine" unique_id=1475001488 node_paths=PackedStringArray("player", "animation_player")]
+script = ExtResource("4_vgqql")
+player = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+
+[node name="run" type="Node" parent="StateMachine" unique_id=298754283 node_paths=PackedStringArray("player", "animation_player")]
+script = ExtResource("5_fkybt")
+player = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+
+[node name="dash" type="Node" parent="StateMachine" unique_id=178541279]
+
+[node name="attack1" type="Node" parent="StateMachine" unique_id=1198971753]
+
+[node name="attack2" type="Node" parent="StateMachine" unique_id=1429664820]
+
+[node name="attack3" type="Node" parent="StateMachine" unique_id=1701463339]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1900996577]
+libraries/ = SubResource("AnimationLibrary_8erm5")
