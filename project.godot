@@ -14,6 +14,10 @@ config/name="Brackeys Jam 2026.1"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ChangeScene="*uid://b04hkkf4tmrdv"
+
 [display]
 
 window/size/viewport_width=1920
