@@ -13,3 +13,7 @@ func physics_update(delta : float) -> void:
 		transitioned.emit(self, "idle")
 	var dir: Vector2 = Input.get_vector("left","right","up","down").normalized()
 	player.move(dir,delta)
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("left_click"):
+		transitioned.emit(self,"attack1")

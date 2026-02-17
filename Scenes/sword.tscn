@@ -15,19 +15,31 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [1.5707964]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/path = NodePath("Sprite2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(240, 0)]
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
 }
 
 [sub_resource type="Animation" id="Animation_6wdhb"]
@@ -40,10 +52,10 @@ tracks/0/path = NodePath("Sprite2D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.10004495, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.066, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.34906584, -0.34906584]
+"values": [1.5707964, 1.0471976, 2.0943952, 1.5707964]
 }
 
 [sub_resource type="Animation" id="Animation_kb2vl"]
@@ -56,10 +68,22 @@ tracks/0/path = NodePath("Sprite2D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.066, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [-0.3490658503988659, -0.5235987755982988, 0.5235988]
+"values": [1.5707964, 2.356194490192345, 0.7853981633974483, 1.5707964]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.1666, 0.23241149),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 20), Vector2(50, 20), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_6j4cb"]
@@ -72,22 +96,34 @@ tracks/0/path = NodePath("Sprite2D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.23333333, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.0666, 0.2333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.5235988, -0.6981317, -0.34906584]
+"values": [1.5707964, 0.0, 3.1415927, 1.5707964]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/path = NodePath("Sprite2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.13333334, 0.3),
+"times": PackedFloat32Array(0, 0.06666667, 0.17601752, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(40, -30), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.065792955, 0.17601752),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(240, 0), Vector2(300, 0), Vector2(240, 0)]
+"values": [Vector2(0.5, 0.5), Vector2(0.6, 0.6), Vector2(0.6, 0.6)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d6wag"]
@@ -101,11 +137,6 @@ _data = {
 [node name="Sword" type="Marker2D" unique_id=1328130014]
 script = ExtResource("1_goa0h")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1609029373]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_6wdhb")
-offset = Vector2(240, 0)
-
 [node name="slashArea1" type="Area2D" parent="." unique_id=511266184]
 visible = false
 position = Vector2(70, 0)
@@ -114,6 +145,7 @@ position = Vector2(70, 0)
 polygon = PackedVector2Array(31, -18, 31, 19, 76, 41, 102, 1, 75, -48)
 
 [node name="slashArea2" type="Area2D" parent="." unique_id=146451732]
+visible = false
 position = Vector2(70, 0)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="slashArea2" unique_id=925110507]
@@ -129,10 +161,11 @@ polygon = PackedVector2Array(30, -19, 30, 18, 72, 105, 127, 1, 67, -110)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=376855912]
 libraries/ = SubResource("AnimationLibrary_d6wag")
 
-[node name="comboCooldown" type="Timer" parent="." unique_id=1494567377]
-
-[node name="combo_cont_timer" type="Timer" parent="." unique_id=952291015]
-wait_time = 0.3
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1302524696]
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_6wdhb")
+offset = Vector2(20, -350)
 
 [connection signal="body_entered" from="slashArea1" to="." method="_on_slash_area_1_body_entered"]
 [connection signal="body_exited" from="slashArea1" to="." method="_on_slash_area_1_body_exited"]
@@ -140,4 +173,4 @@ wait_time = 0.3
 [connection signal="body_exited" from="slashArea2" to="." method="_on_slash_area_2_body_exited"]
 [connection signal="body_entered" from="slashArea3" to="." method="_on_slash_area_3_body_entered"]
 [connection signal="body_exited" from="slashArea3" to="." method="_on_slash_area_3_body_exited"]
-[connection signal="timeout" from="combo_cont_timer" to="." method="_on_combo_cont_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
