@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://wggu72pyv2j5"]
 
 [ext_resource type="Script" uid="uid://bpejgvdsna31j" path="res://Scripts/sword.gd" id="1_goa0h"]
-[ext_resource type="Texture2D" uid="uid://bicjuntfh5e7m" path="res://icon.svg" id="2_6wdhb"]
+[ext_resource type="Texture2D" uid="uid://or0pjqges0mb" path="res://Assets/characters/sword.png" id="2_6wdhb"]
 
 [sub_resource type="Animation" id="Animation_d6wag"]
 length = 0.001
@@ -102,7 +102,7 @@ _data = {
 script = ExtResource("1_goa0h")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1609029373]
-scale = Vector2(0.5625, 0.3125)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_6wdhb")
 offset = Vector2(240, 0)
 
