@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cao3g4dy76msx"]
 
 [ext_resource type="PackedScene" uid="uid://c8eh4pqxs4pdn" path="res://Scenes/player.tscn" id="1_q8hp3"]
-[ext_resource type="Texture2D" uid="uid://d0o76s5tq1fqd" path="res://Assets/floor1.png" id="2_e80bh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_e80bh"]
 normal = Vector2(-1, 8.7422755e-08)
@@ -36,12 +35,3 @@ limit_left = -1300
 limit_top = -1300
 limit_right = 1300
 limit_bottom = 1300
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1250523739]
-z_index = -100
-offset_left = -952.0
-offset_top = -536.0
-offset_right = 960.0
-offset_bottom = 536.0
-texture = ExtResource("2_e80bh")
-stretch_mode = 1
