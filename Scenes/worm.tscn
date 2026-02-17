@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://xj824qmmsfdk"]
+
+[ext_resource type="Script" uid="uid://ql7ag0lij4hb" path="res://Scripts/worm.gd" id="1_l5dqu"]
+[ext_resource type="Texture2D" uid="uid://b70f2uxh6dqwn" path="res://Assets/characters/enemy1.png" id="1_skiwb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0a874"]
+size = Vector2(52, 87)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l5dqu"]
+radius = 402.4972
+
+[node name="Worm" type="CharacterBody2D" unique_id=506971997]
+script = ExtResource("1_l5dqu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1823119912]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_skiwb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1133993511]
+position = Vector2(-4, -9.5)
+shape = SubResource("RectangleShape2D_0a874")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=731839810]
+
+[node name="DetectionArea" type="CollisionShape2D" parent="Area2D" unique_id=1213016233]
+shape = SubResource("CircleShape2D_l5dqu")

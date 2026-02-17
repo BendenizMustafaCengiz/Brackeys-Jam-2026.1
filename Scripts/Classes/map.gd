@@ -5,6 +5,8 @@ var size = 5
 var boss_room_pos : Vector2i
 var current_room : Room
 
+enum direction {RIGHT, LEFT, UP, DOWN}
+
 func _init() -> void:
 	
 	#Room init
