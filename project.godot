@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 ChangeScene="*uid://b04hkkf4tmrdv"
+Save="*uid://6t6svpxc2ull"
 
 [display]
 
