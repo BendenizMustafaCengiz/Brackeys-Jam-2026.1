@@ -24,11 +24,14 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	current_state.physics_update(delta)
 
+func _input(event: InputEvent) -> void:
+	current_state.input(event)
+
  
 func on_child_transitioned(state : State, new_state_name : String) -> void:
 # state anlık statee, new_state_name geçmek istenen statein ismi
 	if state != current_state:
-		push_error("aktif olmayan state başka bir state e geçmek için sinyal yolladı")
+		push_error("aktif olmayan state başka bir state e geçmek için sinyal yolladı: ",state.name)
 		return
 	
 	var new_state = states[new_state_name.to_lower()]

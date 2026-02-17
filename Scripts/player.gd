@@ -7,6 +7,8 @@ const ACCEL: int = 70
 const FRIC : int = 70
 var speed : Vector2 = Vector2.ZERO
 
+@export var combo_transition_time : float = 0.5
+
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()

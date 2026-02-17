@@ -15,3 +15,7 @@ func update(_delta : float) -> void:
 
 func physics_update(delta : float) -> void:
 	player.move(Vector2.ZERO, delta)
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("left_click"):
+		transitioned.emit(self,"attack1")

@@ -5,7 +5,10 @@
 [ext_resource type="Script" uid="uid://7gpps5mm7cnc" path="res://Scripts/States/state_machine.gd" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://cghas6541l4nd" path="res://Scripts/States/player_states/idle.gd" id="4_vgqql"]
 [ext_resource type="Script" uid="uid://q6ro8mu4o6gk" path="res://Scripts/States/player_states/run.gd" id="5_fkybt"]
+[ext_resource type="Script" uid="uid://k7wpclwj3vb" path="res://Scripts/States/player_states/attack_1.gd" id="6_3smsa"]
 [ext_resource type="PackedScene" uid="uid://wggu72pyv2j5" path="res://Scenes/sword.tscn" id="6_x3wgy"]
+[ext_resource type="Script" uid="uid://nv2c8cjbl00c" path="res://Scripts/States/player_states/attack_2.gd" id="7_8erm5"]
+[ext_resource type="Script" uid="uid://bnqudjme7vfd4" path="res://Scripts/States/player_states/attack_3.gd" id="8_f1ek2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkybt"]
 size = Vector2(29, 52)
@@ -157,9 +160,10 @@ position = Vector2(-1, -10)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_x3wgy")
 
-[node name="StateMachine" type="Node" parent="." unique_id=2099382809 node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=2099382809 node_paths=PackedStringArray("initial_state", "state_label")]
 script = ExtResource("3_6t5aa")
 initial_state = NodePath("idle")
+state_label = NodePath("../debug_label")
 
 [node name="idle" type="Node" parent="StateMachine" unique_id=1475001488 node_paths=PackedStringArray("player", "animation_player")]
 script = ExtResource("4_vgqql")
@@ -173,14 +177,41 @@ animation_player = NodePath("../../AnimationPlayer")
 
 [node name="dash" type="Node" parent="StateMachine" unique_id=178541279]
 
-[node name="attack1" type="Node" parent="StateMachine" unique_id=1198971753]
+[node name="attack1" type="Node" parent="StateMachine" unique_id=1198971753 node_paths=PackedStringArray("sword", "player", "animation_player", "combo_transition_timer")]
+script = ExtResource("6_3smsa")
+sword = NodePath("../../Sword")
+player = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+combo_transition_timer = NodePath("../../comboTransitionTimer")
 
-[node name="attack2" type="Node" parent="StateMachine" unique_id=1429664820]
+[node name="attack2" type="Node" parent="StateMachine" unique_id=1429664820 node_paths=PackedStringArray("player", "animation_player", "sword", "combo_transition_timer")]
+script = ExtResource("7_8erm5")
+player = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+sword = NodePath("../../Sword")
+combo_transition_timer = NodePath("../../comboTransitionTimer")
 
-[node name="attack3" type="Node" parent="StateMachine" unique_id=1701463339]
+[node name="attack3" type="Node" parent="StateMachine" unique_id=1701463339 node_paths=PackedStringArray("player", "animation_player", "sword", "combo_transition_timer")]
+script = ExtResource("8_f1ek2")
+player = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+sword = NodePath("../../Sword")
+combo_transition_timer = NodePath("../../comboTransitionTimer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1900996577]
 libraries/ = SubResource("AnimationLibrary_8erm5")
 speed_scale = 2.5
 
 [node name="Sword" parent="." unique_id=1328130014 instance=ExtResource("6_x3wgy")]
+
+[node name="comboTransitionTimer" type="Timer" parent="." unique_id=1049058610]
+
+[node name="debug_label" type="Label" parent="." unique_id=690072866]
+offset_left = -31.0
+offset_top = 84.0
+offset_right = 9.0
+offset_bottom = 107.0
+
+[connection signal="timeout" from="comboTransitionTimer" to="StateMachine/attack1" method="_on_combo_transition_timer_timeout"]
+[connection signal="timeout" from="comboTransitionTimer" to="StateMachine/attack2" method="_on_combo_transition_timer_timeout"]
+[connection signal="timeout" from="comboTransitionTimer" to="StateMachine/attack3" method="_on_combo_transition_timer_timeout"]
