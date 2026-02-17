@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://7gpps5mm7cnc" path="res://Scripts/States/state_machine.gd" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://cghas6541l4nd" path="res://Scripts/States/player_states/idle.gd" id="4_vgqql"]
 [ext_resource type="Script" uid="uid://q6ro8mu4o6gk" path="res://Scripts/States/player_states/run.gd" id="5_fkybt"]
+[ext_resource type="PackedScene" uid="uid://wggu72pyv2j5" path="res://Scenes/sword.tscn" id="6_x3wgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkybt"]
 size = Vector2(29, 52)
@@ -180,3 +181,6 @@ animation_player = NodePath("../../AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1900996577]
 libraries/ = SubResource("AnimationLibrary_8erm5")
+speed_scale = 2.5
+
+[node name="Sword" parent="." unique_id=1328130014 instance=ExtResource("6_x3wgy")]

@@ -5,6 +5,7 @@ class_name PlayerRun
 @export var animation_player: AnimationPlayer
 
 func enter() -> void:
+	animation_player.play("RESET")
 	animation_player.play("run")
 
 func physics_update(delta : float) -> void:
