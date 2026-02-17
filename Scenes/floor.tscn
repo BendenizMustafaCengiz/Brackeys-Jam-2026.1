@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://c1jar5bcqfobu"]
+
+[ext_resource type="Texture2D" uid="uid://p4eixu4o8y67" path="res://Assets/environment/zemin1.png" id="1_wjf51"]
+[ext_resource type="Texture2D" uid="uid://b361ywjvbujif" path="res://Assets/environment/zemin2.png" id="2_1fqph"]
+[ext_resource type="Texture2D" uid="uid://cy0jjrdlpw6yi" path="res://Assets/environment/zemin3.png" id="3_ugy24"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1kv48"]
+texture = ExtResource("1_wjf51")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m6wij"]
+texture = ExtResource("2_1fqph")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0h37b"]
+texture = ExtResource("3_ugy24")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_t4j7g"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_1kv48")
+sources/1 = SubResource("TileSetAtlasSource_m6wij")
+sources/2 = SubResource("TileSetAtlasSource_0h37b")
+
+[node name="Floor" type="TileMapLayer" unique_id=192737482]
+modulate = Color(0.61908174, 0.6190819, 0.6190816, 1)
+z_index = -4096
+tile_set = SubResource("TileSet_t4j7g")
