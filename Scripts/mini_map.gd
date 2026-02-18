@@ -1,10 +1,8 @@
 extends Node2D
 
 var map : Map
-var room_size = 80
-var space = 15
-
-enum direction {RIGHT, LEFT, UP, DOWN}
+var room_size := 80
+var space := 15
 
 @onready var texture_rect: TextureRect = $CanvasLayer/TextureRect
 
@@ -34,7 +32,7 @@ func generate_minimap() -> void:
 
 
 func _ready() -> void:
-	map = Map.new()
+	map = Save.map
 	generate_minimap()
 
 
@@ -42,14 +40,10 @@ func change_room(dir : String):
 	match dir:
 		"right":
 			map.current_room = map.current_room.right_room
-			map.current_room.visited = true
-			generate_minimap()
 		"left":
-			pass
+			map.current_room = map.current_room.left_room
 		"up":
-			pass
+			map.current_room = map.current_room.up_room
 		"down":
-			pass
-		
-		
-	
+			map.current_room = map.current_room.down_room
+	map.current_room.visited = true

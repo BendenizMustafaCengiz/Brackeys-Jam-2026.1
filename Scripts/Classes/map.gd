@@ -4,8 +4,7 @@ var rooms : Array = []
 var size = 5
 var boss_room_pos : Vector2i
 var current_room : Room
-
-enum direction {RIGHT, LEFT, UP, DOWN}
+var boss_room : Room
 
 func _init() -> void:
 	
@@ -20,9 +19,17 @@ func _init() -> void:
 	rooms[2][2].visited = true
 	current_room = rooms[2][2]
 	
-	boss_room_pos.x = 4 * randi_range(0, 1)
-	boss_room_pos.y = 4 * randi_range(0, 1)
-
+	
+	# choosing boss room
+	var die = randi_range(0, 1)
+	if die == 1:
+		boss_room_pos.y = randi_range(0, 4)
+		boss_room_pos.x = 4 * randi_range(0,1)
+	elif die == 0:
+		boss_room_pos.y = 4 * randi_range(0, 1)
+		boss_room_pos.x = randi_range(0, 4)
+	boss_room = rooms[boss_room_pos.x][boss_room_pos.y]
+	boss_room.is_boss_room = true
 
 func init_neighbours() -> void:
 	for i in range(5):

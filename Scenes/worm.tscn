@@ -3,11 +3,16 @@
 [ext_resource type="Script" uid="uid://ql7ag0lij4hb" path="res://Scripts/worm.gd" id="1_l5dqu"]
 [ext_resource type="Texture2D" uid="uid://b70f2uxh6dqwn" path="res://Assets/characters/enemy1.png" id="1_skiwb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0a874"]
-size = Vector2(52, 87)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5dqu"]
+radius = 16.0
+height = 85.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l5dqu"]
 radius = 402.4972
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n80vc"]
+radius = 24.0
+height = 92.0
 
 [node name="Worm" type="CharacterBody2D" unique_id=506971997]
 script = ExtResource("1_l5dqu")
@@ -17,10 +22,37 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_skiwb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1133993511]
-position = Vector2(-4, -9.5)
-shape = SubResource("RectangleShape2D_0a874")
+position = Vector2(-6, -10.5)
+shape = SubResource("CapsuleShape2D_l5dqu")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=731839810]
+[node name="DetectionArea" type="Area2D" parent="." unique_id=731839810]
 
-[node name="DetectionArea" type="CollisionShape2D" parent="Area2D" unique_id=1213016233]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1213016233]
 shape = SubResource("CircleShape2D_l5dqu")
+
+[node name="AttackingArea" type="Area2D" parent="." unique_id=1354831397]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackingArea" unique_id=880929818]
+position = Vector2(-6, -11)
+shape = SubResource("CapsuleShape2D_n80vc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=773284765]
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=993361189]
+one_shot = true
+
+[node name="WaitTimer" type="Timer" parent="." unique_id=1920457160]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="WonderTimer" type="Timer" parent="." unique_id=369140609]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_entered" from="AttackingArea" to="." method="_on_attacking_area_body_entered"]
+[connection signal="body_exited" from="AttackingArea" to="." method="_on_attacking_area_body_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]
+[connection signal="timeout" from="WonderTimer" to="." method="_on_wonder_timer_timeout"]

@@ -1,7 +1,5 @@
 class_name Room extends Node2D
 
-#Kaçıncı oda olduğuna göre düşman sayısı belirlenip düşmanlar rastgele patternde spawnlansın
-
 var enemies : Array
 var visited : bool
 var is_boss_room : bool
