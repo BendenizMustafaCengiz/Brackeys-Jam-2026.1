@@ -13,7 +13,6 @@ func enter() -> void:
 	combo_transition_timer.start(player.combo_transition_time)
 	
 	
-	
 func physics_update(delta : float) -> void:
 	var dir: Vector2 = Input.get_vector("left","right","up","down").normalized()
 	player.move(dir,delta)
@@ -21,10 +20,9 @@ func physics_update(delta : float) -> void:
 		animation_player.play("run")
 	else:
 		animation_player.play("idle")
-		
 
-func input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("left_click"):
+func input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("left_click") and !sword.animation_player.current_animation.get_basename() == "slash1":
 		combo_transition_timer.stop()
 		transitioned.emit(self,"attack3")
 

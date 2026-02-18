@@ -5,6 +5,8 @@ const MAX_SPEED : int = 600
 var speed_multiplier : float = 1.0
 const ACCEL: int = 70
 const FRIC : int = 70
+const DASH_SPEED: int = 15
+var dash_speed_mult : float = 1
 var speed : Vector2 = Vector2.ZERO
 
 @export var combo_transition_time : float = 0.5

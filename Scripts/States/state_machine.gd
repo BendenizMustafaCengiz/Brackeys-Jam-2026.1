@@ -31,7 +31,7 @@ func _input(event: InputEvent) -> void:
 func on_child_transitioned(state : State, new_state_name : String) -> void:
 # state anlık statee, new_state_name geçmek istenen statein ismi
 	if state != current_state:
-		push_error("aktif olmayan state başka bir state e geçmek için sinyal yolladı: ",state.name)
+		#push_error("aktif olmayan ",state.name ," state'i",new_state_name, "'e geçmek için sinyal yolladı: ")
 		return
 	
 	var new_state = states[new_state_name.to_lower()]
