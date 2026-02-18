@@ -25,3 +25,6 @@ func move(dir : Vector2, delta: float)-> void:
 	elif speed.length() <= 0:
 		speed = Vector2.ZERO
 	position += speed*delta
+
+func hit(amount : int) -> void:
+	pass

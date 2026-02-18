@@ -4,3 +4,6 @@ var max_health : int
 var health : int
 var speed : float
 var damage : int
+
+func hurt(amount : int):
+	health -= amount
