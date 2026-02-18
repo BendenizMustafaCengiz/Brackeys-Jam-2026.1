@@ -129,6 +129,7 @@ _data = {
 }
 
 [node name="Worm" type="CharacterBody2D" unique_id=506971997]
+motion_mode = 1
 script = ExtResource("1_l5dqu")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1823119912]

@@ -6,4 +6,5 @@ var speed : float
 var damage : int
 
 func hurt(amount : int):
+	print("ahh bu acıttı")
 	health -= amount

@@ -16,7 +16,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !attacking:
 		look_at(get_global_mouse_position())
 
@@ -26,7 +26,7 @@ func attack1():
 	attacking = true
 	animation_player.play("slash1")
 	for enemy in enemiesInAtt1Range:
-		enemy.hurt()
+		enemy.hurt(damage)
 	enemiesJustHit.append_array(enemiesInAtt1Range)
 
 func attack2():
@@ -36,7 +36,7 @@ func attack2():
 	attacking = true
 	animation_player.play("slash2")
 	for enemy in enemiesInAtt2Range:
-		enemy.hurt()
+		enemy.hurt(damage)
 	enemiesJustHit.append_array(enemiesInAtt2Range)
 
 func attack3():
@@ -46,13 +46,15 @@ func attack3():
 	attacking = true
 	animation_player.play("slash3")
 	for enemy in enemiesInAtt3Range:
-		enemy.hurt()
+		enemy.hurt(damage)
 	enemiesJustHit.append_array(enemiesInAtt2Range)
 
 func _on_slash_area_1_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		return
 	if body.is_class("CharacterBody2D"): # class ı enemy olarak değiştir
 		if attacking and !enemiesJustHit.has(body):
-			body.hurt()
+			body.hurt(damage)
 		else:
 			enemiesInAtt1Range.append(body)
 
@@ -65,14 +67,17 @@ func reset_attack() -> void:
 
 func _on_slash_area_1_body_exited(body: Node2D) -> void:
 	enemiesInAtt1Range.erase(body)
+	
 
 
 func _on_slash_area_2_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		return
 	if body.is_class("CharacterBody2D"): # class ı enemy olarak değiştir
 		if attacking and !enemiesJustHit.has(body):
-			body.hurt()
+			body.hurt(damage)
 		else:
-			enemiesInAtt2Range.append(body)
+			enemiesInAtt1Range.append(body)
 
 
 func _on_slash_area_2_body_exited(body: Node2D) -> void:
@@ -80,11 +85,13 @@ func _on_slash_area_2_body_exited(body: Node2D) -> void:
 
 
 func _on_slash_area_3_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		return
 	if body.is_class("CharacterBody2D"): # class ı enemy olarak değiştir
 		if attacking and !enemiesJustHit.has(body):
-			body.hurt()
+			body.hurt(damage)
 		else:
-			enemiesInAtt3Range.append(body)
+			enemiesInAtt1Range.append(body)
 
 
 func _on_slash_area_3_body_exited(body: Node2D) -> void:
