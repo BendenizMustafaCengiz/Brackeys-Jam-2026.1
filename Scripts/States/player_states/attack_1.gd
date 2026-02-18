@@ -12,11 +12,10 @@ func enter() -> void:
 	combo_transition_timer.start(player.combo_transition_time)
 	first_tick = false
 
-func input(event: InputEvent) -> void:
+func input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_click") and first_tick:
 		combo_transition_timer.stop()
 		transitioned.emit(self,"attack2")
-
 
 
 func physics_update(delta : float) -> void:
