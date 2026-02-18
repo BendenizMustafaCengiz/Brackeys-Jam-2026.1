@@ -58,7 +58,7 @@ func _on_attacking_area_body_entered(body: Node2D) -> void:
 	if body is Player and can_attack:
 		exited_attack_range = false
 		player.hit(damage)
-		print('playerr hitted')
+		print('player hitted')
 		can_attack = false
 		attack_timer.start()
 
