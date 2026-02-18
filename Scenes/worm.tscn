@@ -14,40 +14,157 @@ radius = 402.4972
 radius = 24.0
 height = 92.0
 
+[sub_resource type="Animation" id="Animation_l5dqu"]
+resource_name = "Idle"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 6.3999987)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.3, 0.3), Vector2(0.3, 0.275)]
+}
+
+[sub_resource type="Animation" id="Animation_n80vc"]
+resource_name = "Move"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 6.3999987)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.3, 0.3), Vector2(0.3, 0.275)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.17453292]
+}
+
+[sub_resource type="Animation" id="Animation_x1856"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.3, 0.275)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x1856"]
+_data = {
+&"Idle": SubResource("Animation_l5dqu"),
+&"Move": SubResource("Animation_n80vc"),
+&"RESET": SubResource("Animation_x1856")
+}
+
 [node name="Worm" type="CharacterBody2D" unique_id=506971997]
 script = ExtResource("1_l5dqu")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1823119912]
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.3, 0.275)
 texture = ExtResource("1_skiwb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1133993511]
+visible = false
 position = Vector2(-6, -10.5)
 shape = SubResource("CapsuleShape2D_l5dqu")
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=731839810]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1213016233]
 shape = SubResource("CircleShape2D_l5dqu")
 
 [node name="AttackingArea" type="Area2D" parent="." unique_id=1354831397]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackingArea" unique_id=880929818]
 position = Vector2(-6, -11)
 shape = SubResource("CapsuleShape2D_n80vc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=773284765]
+libraries/ = SubResource("AnimationLibrary_x1856")
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=993361189]
 one_shot = true
 
 [node name="WaitTimer" type="Timer" parent="." unique_id=1920457160]
-wait_time = 0.5
 one_shot = true
 autostart = true
 
 [node name="WonderTimer" type="Timer" parent="." unique_id=369140609]
-wait_time = 2.0
+wait_time = 2.5
 one_shot = true
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
