@@ -18,6 +18,20 @@ size = Vector2(384, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ltrk6"]
 size = Vector2(384, 64)
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_ltrk6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmo20"]
+size = Vector2(64, 384)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grewx"]
+size = Vector2(64, 384)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ue4pp"]
+size = Vector2(384, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ud7s"]
+size = Vector2(384, 64)
+
 [node name="RoomScene" type="Node2D" unique_id=1129382902]
 script = ExtResource("1_gw577")
 
@@ -85,10 +99,46 @@ shape = SubResource("RectangleShape2D_ltrk6")
 
 [node name="Doors" type="Node2D" parent="." unique_id=2042058260]
 
+[node name="RightDoor" type="StaticBody2D" parent="Doors" unique_id=1596086853]
+position = Vector2(1056, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Doors/RightDoor" unique_id=687037479]
+position = Vector2(2.0980835e-05, 7.6293945e-06)
+scale = Vector2(63.99999, 383.99997)
+texture = SubResource("CanvasTexture_ltrk6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/RightDoor" unique_id=594449093]
+shape = SubResource("RectangleShape2D_gmo20")
+
+[node name="LefttDoor" type="StaticBody2D" parent="Doors" unique_id=1704437238]
+position = Vector2(-1056, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Doors/LefttDoor" unique_id=1892790519]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/LefttDoor" unique_id=635426250]
+shape = SubResource("RectangleShape2D_grewx")
+
+[node name="DownDoor" type="StaticBody2D" parent="Doors" unique_id=1667772296]
+position = Vector2(0, 1056)
+
+[node name="Sprite2D" type="Sprite2D" parent="Doors/DownDoor" unique_id=1039871774]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/DownDoor" unique_id=1966197731]
+shape = SubResource("RectangleShape2D_ue4pp")
+
+[node name="UpDoor" type="StaticBody2D" parent="Doors" unique_id=69518719]
+position = Vector2(0, -1056)
+
+[node name="Sprite2D" type="Sprite2D" parent="Doors/UpDoor" unique_id=482431430]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/UpDoor" unique_id=468252618]
+shape = SubResource("RectangleShape2D_0ud7s")
+
 [node name="MiniMap" parent="." unique_id=145401603 instance=ExtResource("4_4ih6r")]
+position = Vector2(-192, 200)
 
 [node name="Worm" parent="." unique_id=506971997 instance=ExtResource("5_ltrk6")]
-position = Vector2(-456, -360)
+position = Vector2(-920, 944)
 
 [connection signal="body_entered" from="Exits/Right Exit" to="." method="_on_right_exit_body_entered"]
 [connection signal="body_entered" from="Exits/Left Exit" to="." method="_on_left_exit_body_entered"]
