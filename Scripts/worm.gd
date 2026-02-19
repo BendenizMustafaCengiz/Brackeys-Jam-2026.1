@@ -48,8 +48,11 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 		current_state = state.CHASE
 		wait_timer.stop()
 		wonder_timer.stop()
+		if sprite.flip_h:
+			animation_player.play("Move_Right")
+		else:
+			animation_player.play("Move_Left")
 		
-		animation_player.play("Move")
 
 func _on_wait_timer_timeout() -> void:
 	wonder_timer.start()
@@ -60,7 +63,10 @@ func _on_wait_timer_timeout() -> void:
 	wonder_velocity.y = randf_range(-1.0, 1.0)
 	wonder_velocity = wonder_velocity.normalized()
 	
-	animation_player.play("Move")
+	if sprite.flip_h:
+		animation_player.play("Move_Left")
+	else:
+		animation_player.play("Move_Right")
 
 func _on_wonder_timer_timeout() -> void:
 	wait_timer.start()

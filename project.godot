@@ -28,6 +28,10 @@ window/size/viewport_height=1080
 
 player=""
 
+[gui]
+
+theme/custom_font="uid://d10tlauoqpxsh"
+
 [input]
 
 left={
