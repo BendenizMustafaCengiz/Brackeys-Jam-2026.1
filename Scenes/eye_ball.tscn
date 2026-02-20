@@ -202,6 +202,10 @@ libraries/ = SubResource("AnimationLibrary_252s2")
 autoplay = &"Fly"
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=613924309]
+wait_time = 8.0
+one_shot = true
 
 [node name="Laser" parent="." unique_id=743870482 instance=ExtResource("6_b37rs")]
-color = Color(0.3308012, 0.28399247, 0.6740458, 1)
+is_casting = false
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

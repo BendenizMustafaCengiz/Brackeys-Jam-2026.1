@@ -3,13 +3,20 @@
 [ext_resource type="Script" uid="uid://cxo7otwh2juij" path="res://Scripts/laser.gd" id="1_r1bh0"]
 
 [node name="Laser" type="RayCast2D" unique_id=743870482]
-enabled = false
-target_position = Vector2(3000, 0)
+rotation = 1.5707964
+target_position = Vector2(4000, 0)
 script = ExtResource("1_r1bh0")
+color = Color(0, 0.85490197, 1, 1)
 is_casting = true
 
 [node name="Line2D" type="Line2D" parent="." unique_id=1185626860]
-points = PackedVector2Array(0, 0, 3000, 0)
-closed = true
+points = PackedVector2Array(0, 0, 4000, 0)
+width = 30.0
 begin_cap_mode = 2
 end_cap_mode = 2
+
+[node name="DamageCooldown" type="Timer" parent="." unique_id=1546228892]
+wait_time = 0.15
+one_shot = true
+
+[connection signal="timeout" from="DamageCooldown" to="." method="_on_damage_cooldown_timeout"]

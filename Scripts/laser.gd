@@ -1,9 +1,9 @@
 extends RayCast2D
 
 @export var cast_speed := 7000.0
-@export var max_length := 3000.0
+@export var max_length := 4000.0
 @export var growth_time := 0.1
-@export var color := Color.WHITE: set = set_color
+@export var color := Color.WHITE
 
 @export var is_casting := false: set = set_is_casting
 
@@ -11,20 +11,18 @@ var tween: Tween = null
 
 @onready var line_2d: Line2D = $Line2D
 @onready var line_width := line_2d.width
-
+@onready var damage_cooldown: Timer = $DamageCooldown
+var cooldown_is_active = false
 
 func _ready() -> void:
 	
-	print('exist')
 	set_color(color)
 	
 	line_2d.points[0] = Vector2.ZERO
 	line_2d.points[1] = Vector2.ZERO
 	line_2d.visible = false
 	
-	
 	set_is_casting(is_casting)
-
 
 func _physics_process(delta: float) -> void:
 	target_position.x = move_toward(
@@ -32,26 +30,36 @@ func _physics_process(delta: float) -> void:
 		max_length,
 		cast_speed * delta
 	)
-
+	
 	var laser_end_position := target_position
 	force_raycast_update()
-
+	
 	if is_colliding():
 		laser_end_position = to_local(get_collision_point())
-
+		if get_collider() is Player and not cooldown_is_active:
+			get_collider().hit(20)
+			damage_cooldown.start()
+			cooldown_is_active = true
+			print("laser hitted")
+			
+	
 	line_2d.points[1] = laser_end_position
-
+	
 
 func set_is_casting(new_value: bool) -> void:
 	if is_casting == new_value:
 		return
+		
+	if line_2d == null:
+		return
+	
 	is_casting = new_value
 	set_physics_process(is_casting)
 	
 	if is_casting:
 		line_2d.points[1] = line_2d.points[0]
-	
 		appear()
+		
 	else:
 		target_position = Vector2.ZERO
 		disappear()
@@ -77,3 +85,7 @@ func set_color(new_color: Color) -> void:
 		return
 
 	line_2d.modulate = new_color
+
+
+func _on_damage_cooldown_timeout() -> void:
+	cooldown_is_active = false
