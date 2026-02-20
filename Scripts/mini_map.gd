@@ -4,7 +4,26 @@ var map : Map
 var room_size := 80
 var space := 15
 
+var mini_size = Vector2(0.5,0.5)
+var big_size = Vector2(1.5,1.5)
+var mini_pos = Vector2(1592.0, 760.0)
+var big_pos = Vector2(568, 152)
+
+var is_mini = true
+
 @onready var texture_rect: TextureRect = $CanvasLayer/TextureRect
+
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("toggle_map"):
+		if is_mini:
+			texture_rect.scale = big_size
+			texture_rect.position = big_pos
+		else:
+			texture_rect.scale = mini_size
+			texture_rect.position = mini_pos
+		is_mini = not is_mini
+	
 
 func generate_minimap() -> void:
 	var rooms = map.rooms
@@ -18,15 +37,19 @@ func generate_minimap() -> void:
 			var x = space * (i + 1) + room_size * i
 			var y = space * (j + 1) + room_size * j
 			
-			var room_color = Color.BLUE
+			var room_color = Color.DIM_GRAY
 			if rooms[i][j].visited == true:
 				room_color = Color.CORNFLOWER_BLUE
 			
-			if map.current_room == rooms[i][j]:
-				pass
-				#icon ayarla
-			
 			map_image.fill_rect(Rect2i(x, y, room_size, room_size), room_color)
+			
+			if map.current_room == rooms[i][j]:
+				room_color = Color.DARK_ORANGE
+				@warning_ignore("integer_division")
+				map_image.fill_rect(Rect2i(x + room_size/4, y + 2 * room_size / 5 , room_size / 2, room_size / 5), room_color)
+				@warning_ignore("integer_division")
+				map_image.fill_rect(Rect2i(x + 2 * room_size / 5, y+room_size / 4 , room_size / 5, room_size / 2), room_color)
+
 	
 	texture_rect.texture = ImageTexture.create_from_image(map_image)
 

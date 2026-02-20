@@ -7,6 +7,7 @@ var inner_attack_range = 400
 var outer_attack_range = 1000
 var is_attacking = false
 var is_in_cooldown = false
+@onready var attack_area: Area2D = $AttackArea
 
 @onready var laser: RayCast2D = $Laser
 @onready var attack_timer: Timer = $AttackTimer
@@ -16,11 +17,12 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 
 
-func init_stats(rooms_cleared : int) ->void:
+func init_stats(rooms_cleared : int) -> void:
 	speed = 300
 	max_health = rooms_cleared * 5 + 20
 	health = max_health
 	damage = rooms_cleared + 5
+	attack_area.damage = damage * 2
 
 
 

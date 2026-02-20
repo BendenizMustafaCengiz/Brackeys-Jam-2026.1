@@ -12,7 +12,7 @@ script = ExtResource("1_5lser")
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=448987700]
 texture_filter = 1
 custom_minimum_size = Vector2(520, 520)
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 1592.0

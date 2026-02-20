@@ -7,6 +7,7 @@ var min_range: int # bu rangein içine girersen geri kaç
 var retreat_speed: int 
 @onready var shooting_pos: Marker2D = $shooting_pos
 const PROJ : PackedScene = preload("res://Scenes/projectile.tscn")
+@onready var attack_area: Area2D = $AttackArea
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
@@ -21,6 +22,9 @@ func init_stats(room_no: int):
 	wide_range = 700
 	min_range = 300
 	retreat_speed = 500
+	damage = 25 + room_no * 5
+	attack_area.damage = damage
+	max_health = 100 + room_no * 20
 
 func attack(dir: Vector2):
 	var new_proj = PROJ.instantiate()

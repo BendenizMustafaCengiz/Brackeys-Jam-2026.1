@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://d3515fw65lvj"]
+[gd_scene format=3 uid="uid://dyyy5pseu1wu6"]
 
 [ext_resource type="Script" uid="uid://cde5wxlluh6q3" path="res://Scripts/enemy_2.gd" id="1_527ua"]
 [ext_resource type="Texture2D" uid="uid://oxeykfqg4iet" path="res://Assets/characters/slime_monster.png" id="2_8n4gd"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c5yhqjdh8c37o" path="res://Scripts/States/enemy_states/enemy2_follow.gd" id="4_qit8y"]
 [ext_resource type="Script" uid="uid://db67p1i6af85i" path="res://Scripts/States/enemy_states/enemy2_dash.gd" id="5_4gdgy"]
 [ext_resource type="Script" uid="uid://d2rbav3fv86b1" path="res://Scripts/States/enemy_states/enemy2_wait.gd" id="6_8n4gd"]
+[ext_resource type="PackedScene" uid="uid://dip7l8ntmfd5f" path="res://Scenes/attack_area.tscn" id="7_pfsys"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pfsys"]
 size = Vector2(185, 174)
@@ -172,6 +173,9 @@ _data = {
 &"idle": SubResource("Animation_0o7g4")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plxki"]
+size = Vector2(204, 192)
+
 [node name="Enemy2" type="CharacterBody2D" unique_id=725837146]
 motion_mode = 1
 script = ExtResource("1_527ua")
@@ -220,6 +224,12 @@ offset_left = -19.0
 offset_top = 102.0
 offset_right = 21.0
 offset_bottom = 121.0
+
+[node name="AttackArea" parent="." unique_id=150417490 instance=ExtResource("7_pfsys")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1883155144]
+position = Vector2(-2, -8)
+shape = SubResource("RectangleShape2D_plxki")
 
 [connection signal="timeout" from="follow_timer" to="StateMachine/follow" method="_on_follow_time_timeout"]
 [connection signal="timeout" from="wait_timer" to="StateMachine/wait" method="_on_wait_timer_timeout"]
