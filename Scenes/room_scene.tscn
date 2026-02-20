@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://c8eh4pqxs4pdn" path="res://Scenes/player.tscn" id="1_q8hp3"]
 [ext_resource type="PackedScene" uid="uid://c1jar5bcqfobu" path="res://Scenes/floor.tscn" id="2_e80bh"]
 [ext_resource type="PackedScene" uid="uid://byeha0vj6lood" path="res://Scenes/mini_map.tscn" id="4_4ih6r"]
-[ext_resource type="PackedScene" uid="uid://xj824qmmsfdk" path="res://Scenes/worm.tscn" id="5_ltrk6"]
+[ext_resource type="PackedScene" uid="uid://j36u3khpif3y" path="res://Scenes/eye_ball.tscn" id="5_ltrk6"]
+[ext_resource type="PackedScene" uid="uid://xj824qmmsfdk" path="res://Scenes/worm.tscn" id="6_gmo20"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e80bh"]
 size = Vector2(64, 384)
@@ -23,11 +24,17 @@ size = Vector2(384, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmo20"]
 size = Vector2(64, 384)
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_gmo20"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_grewx"]
 size = Vector2(64, 384)
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_grewx"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ue4pp"]
 size = Vector2(384, 64)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ue4pp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ud7s"]
 size = Vector2(384, 64)
@@ -110,18 +117,24 @@ texture = SubResource("CanvasTexture_ltrk6")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/RightDoor" unique_id=594449093]
 shape = SubResource("RectangleShape2D_gmo20")
 
-[node name="LefttDoor" type="StaticBody2D" parent="Doors" unique_id=1704437238]
+[node name="LeftDoor" type="StaticBody2D" parent="Doors" unique_id=1704437238]
 position = Vector2(-1056, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Doors/LefttDoor" unique_id=1892790519]
+[node name="Sprite2D" type="Sprite2D" parent="Doors/LeftDoor" unique_id=1892790519]
+position = Vector2(1.9073486e-06, 7.6293945e-06)
+scale = Vector2(63.999996, 383.99997)
+texture = SubResource("CanvasTexture_gmo20")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/LefttDoor" unique_id=635426250]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/LeftDoor" unique_id=635426250]
 shape = SubResource("RectangleShape2D_grewx")
 
 [node name="DownDoor" type="StaticBody2D" parent="Doors" unique_id=1667772296]
 position = Vector2(0, 1056)
 
 [node name="Sprite2D" type="Sprite2D" parent="Doors/DownDoor" unique_id=1039871774]
+position = Vector2(7.6293945e-06, 1.9073486e-06)
+scale = Vector2(383.99997, 63.999996)
+texture = SubResource("CanvasTexture_grewx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/DownDoor" unique_id=1966197731]
 shape = SubResource("RectangleShape2D_ue4pp")
@@ -130,6 +143,9 @@ shape = SubResource("RectangleShape2D_ue4pp")
 position = Vector2(0, -1056)
 
 [node name="Sprite2D" type="Sprite2D" parent="Doors/UpDoor" unique_id=482431430]
+position = Vector2(0.53734255, 0.19332415)
+scale = Vector2(-383.76727, 64.924286)
+texture = SubResource("CanvasTexture_ue4pp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/UpDoor" unique_id=468252618]
 shape = SubResource("RectangleShape2D_0ud7s")
@@ -137,8 +153,11 @@ shape = SubResource("RectangleShape2D_0ud7s")
 [node name="MiniMap" parent="." unique_id=145401603 instance=ExtResource("4_4ih6r")]
 position = Vector2(-192, 200)
 
-[node name="Worm" parent="." unique_id=506971997 instance=ExtResource("5_ltrk6")]
-position = Vector2(-920, 944)
+[node name="EyeBall" parent="." unique_id=1858000069 instance=ExtResource("5_ltrk6")]
+position = Vector2(-480, -616)
+
+[node name="Worm" parent="." unique_id=506971997 instance=ExtResource("6_gmo20")]
+position = Vector2(-632, 664)
 
 [connection signal="body_entered" from="Exits/Right Exit" to="." method="_on_right_exit_body_entered"]
 [connection signal="body_entered" from="Exits/Left Exit" to="." method="_on_left_exit_body_entered"]
