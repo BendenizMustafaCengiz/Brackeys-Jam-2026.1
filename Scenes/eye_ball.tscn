@@ -1,0 +1,211 @@
+[gd_scene format=3 uid="uid://j36u3khpif3y"]
+
+[ext_resource type="Texture2D" uid="uid://dera6r40faio2" path="res://Assets/characters/eyeball/eyeball.png" id="1_n7ecl"]
+[ext_resource type="Script" uid="uid://3kdkqpohshma" path="res://Scripts/eye_ball.gd" id="1_pb8vu"]
+[ext_resource type="Texture2D" uid="uid://b3hiydh1swr70" path="res://Assets/characters/eyeball/wing.png" id="1_xh4iv"]
+[ext_resource type="Texture2D" uid="uid://bo50gsxnrrnfb" path="res://Assets/characters/eyeball/eyeball_frame2.png" id="2_xh4iv"]
+[ext_resource type="Texture2D" uid="uid://dfxtppoud5ax8" path="res://Assets/characters/eyeball/eyeball_frame3.png" id="3_pb8vu"]
+[ext_resource type="PackedScene" uid="uid://cjdiambhb5g1e" path="res://Scenes/laser.tscn" id="6_b37rs"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xh4iv"]
+radius = 64.0
+height = 160.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b37rs"]
+animations = [{
+"frames": [{
+"duration": 20.0,
+"texture": ExtResource("1_n7ecl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xh4iv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pb8vu")
+}],
+"loop": true,
+"name": &"Blink",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_n7ecl")
+}],
+"loop": true,
+"name": &"NoBlink",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_xh4iv"]
+resource_name = "Attack"
+
+[sub_resource type="Animation" id="Animation_pb8vu"]
+resource_name = "Fly"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RWing:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.2617993877991494, 0.2617993877991494]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LWing:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.2617993877991494, -0.2617993877991494]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RWing:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 2), Vector2(0, -2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimSprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 5), Vector2(0, -5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LWing:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.028358, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 2), Vector2(0, -2)]
+}
+
+[sub_resource type="Animation" id="Animation_b37rs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RWing:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LWing:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RWing:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimSprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LWing:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_252s2"]
+_data = {
+&"Attack": SubResource("Animation_xh4iv"),
+&"Fly": SubResource("Animation_pb8vu"),
+&"RESET": SubResource("Animation_b37rs")
+}
+
+[node name="EyeBall" type="CharacterBody2D" unique_id=1858000069]
+scale = Vector2(0.7, 0.7)
+motion_mode = 1
+script = ExtResource("1_pb8vu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1844071495]
+shape = SubResource("CapsuleShape2D_xh4iv")
+
+[node name="RWing" type="Sprite2D" parent="." unique_id=1081260466]
+position = Vector2(0, 10)
+texture = ExtResource("1_xh4iv")
+offset = Vector2(112, 0)
+
+[node name="LWing" type="Sprite2D" parent="." unique_id=1541387180]
+texture = ExtResource("1_xh4iv")
+offset = Vector2(-112, 0)
+flip_h = true
+
+[node name="AnimSprite" type="AnimatedSprite2D" parent="." unique_id=1477093035]
+sprite_frames = SubResource("SpriteFrames_b37rs")
+animation = &"Blink"
+autoplay = "Blink"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=286964782]
+libraries/ = SubResource("AnimationLibrary_252s2")
+autoplay = &"Fly"
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=613924309]
+wait_time = 8.0
+one_shot = true
+
+[node name="Laser" parent="." unique_id=743870482 instance=ExtResource("6_b37rs")]
+is_casting = false
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

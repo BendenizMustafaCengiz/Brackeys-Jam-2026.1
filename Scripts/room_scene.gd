@@ -11,6 +11,11 @@ func _ready() -> void:
 	player.position = init_player_pos
 	#zorluk seviyesine göre enemies arrayini doldur
 
+
+func _process(delta: float) -> void:
+	pass
+	
+
 #Right exit
 func _on_right_exit_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
@@ -38,3 +43,26 @@ func _on_up_exit_body_entered(body: Node2D) -> void:
 		ChangeScene.change_scene("res://Scenes/room_scene.tscn")
 		mini_map.change_room("up")
 		init_player_pos = Vector2(0,900)
+
+
+func open_doors() -> void:
+	var room : Room = mini_map.map.current_room
+	
+	var tween = create_tween()
+	tween.set_parallel(true)
+	
+	if room.left_room:
+		tween.tween_property($Doors/LeftDoor/Sprite2D, "modulate", Color(1.0, 1.0, 1.0, 0.0), 1.0)
+		$Doors/LeftDoor/CollisionShape2D.disabled = true
+	if room.right_room:
+		tween.tween_property($Doors/RightDoor/Sprite2D, "modulate", Color(1.0, 1.0, 1.0, 0.0), 1.0)
+		$Doors/RightDoor/CollisionShape2D.disabled = true
+	if room.down_room:
+		tween.tween_property($Doors/DownDoor/Sprite2D, "modulate", Color(1.0, 1.0, 1.0, 0.0), 1.0)
+		$Doors/DownDoor/CollisionShape2D.disabled = true
+	if room.up_room:
+		tween.tween_property($Doors/UpDoor/Sprite2D, "modulate", Color(1.0, 1.0, 1.0, 0.0), 1.0)
+		$Doors/UpDoor/CollisionShape2D.disabled = true
+	
+	
+	pass
