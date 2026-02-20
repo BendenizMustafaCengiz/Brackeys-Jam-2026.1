@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bav527wafvxn0"]
+
+[ext_resource type="Script" uid="uid://nqd41ojam7v8" path="res://Scripts/hp_bar.gd" id="1_tk80w"]
+[ext_resource type="Texture2D" uid="uid://dxl4by0vuv8gm" path="res://Assets/hp bar/frm_grey.png" id="2_46piw"]
+[ext_resource type="Texture2D" uid="uid://8nh5hbc2wf0e" path="res://Assets/hp bar/frm.png" id="3_w0730"]
+[ext_resource type="Texture2D" uid="uid://cm7qg4nsimtvo" path="res://Assets/hp bar/frm_white.png" id="4_m0hsx"]
+[ext_resource type="Texture2D" uid="uid://cevkraslyqobc" path="res://Assets/hp bar/frm_red_better.png" id="5_brkwj"]
+
+[node name="StatBar" type="Control" unique_id=834999668 node_paths=PackedStringArray("back_bar", "front_bar")]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tk80w")
+back_bar = NodePath("BackBar")
+front_bar = NodePath("FrontBar")
+is_health = true
+low_hp_pulse = true
+damage_shake = true
+
+[node name="BackBar" type="TextureProgressBar" parent="." unique_id=1827930947]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(5, 5)
+value = 100.0
+texture_under = ExtResource("2_46piw")
+texture_over = ExtResource("3_w0730")
+texture_progress = ExtResource("4_m0hsx")
+
+[node name="FrontBar" type="TextureProgressBar" parent="." unique_id=939395340]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 40.0
+scale = Vector2(5, 5)
+value = 100.0
+texture_progress = ExtResource("5_brkwj")

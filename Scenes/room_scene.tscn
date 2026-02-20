@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://c1jar5bcqfobu" path="res://Scenes/floor.tscn" id="2_e80bh"]
 [ext_resource type="PackedScene" uid="uid://byeha0vj6lood" path="res://Scenes/mini_map.tscn" id="4_4ih6r"]
 [ext_resource type="PackedScene" uid="uid://j36u3khpif3y" path="res://Scenes/eye_ball.tscn" id="5_ltrk6"]
+[ext_resource type="PackedScene" uid="uid://dyyy5pseu1wu6" path="res://Scenes/enemy_2.tscn" id="6_grewx"]
+[ext_resource type="PackedScene" uid="uid://b3plfpl0c24bu" path="res://Scenes/enemy_ranged.tscn" id="7_ue4pp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e80bh"]
 size = Vector2(64, 384)
@@ -154,6 +156,12 @@ position = Vector2(-192, 200)
 
 [node name="EyeBall" parent="." unique_id=1858000069 instance=ExtResource("5_ltrk6")]
 position = Vector2(-480, -616)
+
+[node name="Enemy2" parent="." unique_id=725837146 instance=ExtResource("6_grewx")]
+position = Vector2(648, -560)
+
+[node name="EnemyRanged" parent="." unique_id=602971446 instance=ExtResource("7_ue4pp")]
+position = Vector2(-648, 408)
 
 [connection signal="body_entered" from="Exits/Right Exit" to="." method="_on_right_exit_body_entered"]
 [connection signal="body_entered" from="Exits/Left Exit" to="." method="_on_left_exit_body_entered"]
