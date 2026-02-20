@@ -26,18 +26,22 @@ func attack1():
 	attacking = true
 	animation_player.play("slash1")
 	for enemy in enemiesInAtt1Range:
+		if enemiesJustHit.has(enemy):
+			continue
 		enemy.hurt(damage)
-	enemiesJustHit.append_array(enemiesInAtt1Range)
-
+		enemiesJustHit.append(enemy)
+	
 func attack2():
 	if animation_player.is_animation_active():
 		await animation_player.animation_finished
 	enemiesJustHit.clear()
 	attacking = true
 	animation_player.play("slash2")
-	for enemy in enemiesInAtt2Range:
+	for enemy in enemiesInAtt1Range:
+		if enemiesJustHit.has(enemy):
+			continue
 		enemy.hurt(damage)
-	enemiesJustHit.append_array(enemiesInAtt2Range)
+		enemiesJustHit.append(enemy)
 
 func attack3():
 	if animation_player.is_animation_active():
@@ -45,9 +49,11 @@ func attack3():
 	enemiesJustHit.clear()
 	attacking = true
 	animation_player.play("slash3")
-	for enemy in enemiesInAtt3Range:
+	for enemy in enemiesInAtt1Range:
+		if enemiesJustHit.has(enemy):
+			continue
 		enemy.hurt(damage)
-	enemiesJustHit.append_array(enemiesInAtt2Range)
+		enemiesJustHit.append(enemy)
 
 func _on_slash_area_1_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -55,8 +61,11 @@ func _on_slash_area_1_body_entered(body: Node2D) -> void:
 	if body.is_class("CharacterBody2D"): # class ı enemy olarak değiştir
 		if attacking and !enemiesJustHit.has(body):
 			body.hurt(damage)
+			enemiesJustHit.append(body)
 		else:
-			enemiesInAtt1Range.append(body)
+			if ! enemiesInAtt1Range.has(body):
+				enemiesInAtt1Range.append(body)
+
 
 
 func reset_attack() -> void:
@@ -66,8 +75,9 @@ func reset_attack() -> void:
 
 
 func _on_slash_area_1_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		return
 	enemiesInAtt1Range.erase(body)
-	
 
 
 func _on_slash_area_2_body_entered(body: Node2D) -> void:
@@ -76,12 +86,16 @@ func _on_slash_area_2_body_entered(body: Node2D) -> void:
 	if body.is_class("CharacterBody2D"): # class ı enemy olarak değiştir
 		if attacking and !enemiesJustHit.has(body):
 			body.hurt(damage)
+			enemiesJustHit.append(body)
 		else:
-			enemiesInAtt1Range.append(body)
+			if ! enemiesInAtt2Range.has(body):
+				enemiesInAtt2Range.append(body)
 
 
 func _on_slash_area_2_body_exited(body: Node2D) -> void:
-	enemiesInAtt2Range.erase(body)
+	if body.is_in_group("player"):
+		return
+	enemiesInAtt1Range.erase(body)
 
 
 func _on_slash_area_3_body_entered(body: Node2D) -> void:
@@ -90,12 +104,16 @@ func _on_slash_area_3_body_entered(body: Node2D) -> void:
 	if body.is_class("CharacterBody2D"): # class ı enemy olarak değiştir
 		if attacking and !enemiesJustHit.has(body):
 			body.hurt(damage)
+			enemiesJustHit.append(body)
 		else:
-			enemiesInAtt1Range.append(body)
+			if ! enemiesInAtt3Range.has(body):
+				enemiesInAtt3Range.append(body)
 
 
 func _on_slash_area_3_body_exited(body: Node2D) -> void:
-	enemiesInAtt3Range.erase(body)
+	if body.is_in_group("player"):
+		return
+	enemiesInAtt1Range.erase(body)
 
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
