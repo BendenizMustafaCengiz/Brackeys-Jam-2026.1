@@ -10,6 +10,7 @@ var enemiesJustHit : Array = []
 var enemiesInAtt1Range: Array = []
 var enemiesInAtt2Range: Array = []
 var enemiesInAtt3Range: Array = []
+var enemiesInDashRange: Array = []
 
 func _ready() -> void:
 	pass
@@ -54,6 +55,17 @@ func attack3():
 			continue
 		enemy.hurt(damage)
 		enemiesJustHit.append(enemy)
+
+func dash_attack():
+	enemiesJustHit.clear()
+	attacking = true
+	animation_player.play("dash")
+	for enemy in enemiesInAtt1Range:
+		if enemiesJustHit.has(enemy):
+			continue
+		enemy.hurt(damage)
+		enemiesJustHit.append(enemy)
+	
 
 func _on_slash_area_1_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -118,3 +130,21 @@ func _on_slash_area_3_body_exited(body: Node2D) -> void:
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	reset_attack()
+
+
+func _on_dash_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		return
+	if body.is_class("CharacterBody2D"): # class ı enemy olarak değiştir
+		if attacking and !enemiesJustHit.has(body):
+			body.hurt(damage)
+			enemiesJustHit.append(body)
+		else:
+			if ! enemiesInDashRange.has(body):
+				enemiesInDashRange.append(body)
+
+
+func _on_dash_area_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		return
+	enemiesInAtt1Range.erase(body)
