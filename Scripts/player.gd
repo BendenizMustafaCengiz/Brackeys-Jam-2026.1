@@ -38,5 +38,4 @@ func hit(amount : int) -> void:
 
 
 func _on_dash_cooldown_timeout() -> void:
-	print("oldu mu")
 	can_dash = true

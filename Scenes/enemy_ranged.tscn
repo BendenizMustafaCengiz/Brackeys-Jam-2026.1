@@ -1,0 +1,225 @@
+[gd_scene format=3 uid="uid://urcq57012env"]
+
+[ext_resource type="Script" path="res://Scripts/enemy_ranged.gd" id="1_3bg5g"]
+[ext_resource type="Texture2D" uid="uid://cyyanbos6gl3n" path="res://Assets/characters/ranged enemy.png" id="2_5j68v"]
+[ext_resource type="Script" uid="uid://7gpps5mm7cnc" path="res://Scripts/States/state_machine.gd" id="3_htpsb"]
+[ext_resource type="Script" uid="uid://b0mgc02kg6jbt" path="res://Scripts/States/enemy_states/enemy_ranged_follow.gd" id="4_t233f"]
+[ext_resource type="Script" uid="uid://bglb8f73l40vc" path="res://Scripts/States/enemy_states/enemy_ranged_retreat.gd" id="5_5j68v"]
+[ext_resource type="Script" uid="uid://cm1ws4sf4stcf" path="res://Scripts/States/enemy_states/enemy_ranged_attack.gd" id="5_kowwf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t233f"]
+size = Vector2(148, 148)
+
+[sub_resource type="Animation" id="Animation_5j68v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.4, 0.4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_t1bbw"]
+resource_name = "attack"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8000001, 1),
+"transitions": PackedFloat32Array(1.0000001, 7.464252, 0.68302023, 1.0000005),
+"update": 0,
+"values": [Vector2(0.4, 0.4), Vector2(0.36, 0.36), Vector2(0.44, 0.44), Vector2(0.4, 0.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8000001, 1),
+"transitions": PackedFloat32Array(1, 4.594792, 0.6830201, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 5), Vector2(0, -10), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_g6gig"]
+resource_name = "follow"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -4.7683716e-07), Vector2(0, 6), Vector2(0, -6), Vector2(0, -4.7683716e-07)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5, 0.70000005, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.08726646, -0.08726646, 0.08726646, -0.08726646, 0.00040644413]
+}
+
+[sub_resource type="Animation" id="Animation_t233f"]
+resource_name = "new_animation"
+
+[sub_resource type="Animation" id="Animation_78sx7"]
+resource_name = "retreat"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:skew")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1.0000001, 1.0000001, 1),
+"update": 0,
+"values": [0.0, 0.17453292, -0.17453292, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.08726646259971647, 0.08726646259971647, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-5, 0), Vector2(5, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kowwf"]
+_data = {
+&"RESET": SubResource("Animation_5j68v"),
+&"attack": SubResource("Animation_t1bbw"),
+&"follow": SubResource("Animation_g6gig"),
+&"new_animation": SubResource("Animation_t233f"),
+&"retreat": SubResource("Animation_78sx7")
+}
+
+[node name="EnemyRanged" type="CharacterBody2D" unique_id=602971446]
+motion_mode = 1
+script = ExtResource("1_3bg5g")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2053076233]
+position = Vector2(0, 5)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_5j68v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1403542938]
+shape = SubResource("RectangleShape2D_t233f")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1071155965 node_paths=PackedStringArray("initial_state", "state_label")]
+script = ExtResource("3_htpsb")
+initial_state = NodePath("follow")
+state_label = NodePath("../Label")
+
+[node name="follow" type="Node" parent="StateMachine" unique_id=566969481 node_paths=PackedStringArray("enemy", "animation_player")]
+script = ExtResource("4_t233f")
+enemy = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+
+[node name="retreat" type="Node" parent="StateMachine" unique_id=1546491574 node_paths=PackedStringArray("enemy", "animation_player")]
+script = ExtResource("5_5j68v")
+enemy = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+
+[node name="attack" type="Node" parent="StateMachine" unique_id=1090475047 node_paths=PackedStringArray("random_movement_timer", "enemy", "animation_player", "attack_timer")]
+script = ExtResource("5_kowwf")
+random_movement_timer = NodePath("../../random_movement_timer")
+enemy = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+attack_timer = NodePath("../../attack_timer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1795590253]
+libraries/ = SubResource("AnimationLibrary_kowwf")
+
+[node name="attack_timer" type="Timer" parent="." unique_id=387591655]
+
+[node name="random_movement_timer" type="Timer" parent="." unique_id=1770659748]
+
+[node name="Label" type="Label" parent="." unique_id=367921579]
+offset_left = -17.0
+offset_top = 68.0
+offset_right = 23.0
+offset_bottom = 87.0
+
+[node name="shooting_pos" type="Marker2D" parent="." unique_id=1191220714]
+position = Vector2(-7, 9)
+
+[connection signal="timeout" from="attack_timer" to="StateMachine/attack" method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="random_movement_timer" to="StateMachine/attack" method="_on_random_movement_timer_timeout"]
