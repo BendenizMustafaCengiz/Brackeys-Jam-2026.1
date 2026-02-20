@@ -9,7 +9,8 @@ var player: Player
 func enter() -> void:
 	if !player:
 		player = get_tree().get_first_node_in_group("player")
-	animation_player.play("new_animation")
+	animation_player.play("RESET")
+	animation_player.play("follow")
 
 func physics_update(delta : float) -> void:
 	var dir: Vector2 = (player.global_position - enemy.global_position).normalized()

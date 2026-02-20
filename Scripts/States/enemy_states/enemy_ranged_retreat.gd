@@ -11,7 +11,8 @@ var rot_degree: float
 func enter() -> void:
 	if !player:
 		player = get_tree().get_first_node_in_group("player")
-	animation_player.play("new_animation")
+	animation_player.play("RESET")
+	animation_player.play("retreat")
 	choose_random_rot_dir()
 
 func physics_update(delta : float) -> void:

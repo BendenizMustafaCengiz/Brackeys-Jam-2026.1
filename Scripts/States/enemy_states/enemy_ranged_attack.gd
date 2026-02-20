@@ -14,8 +14,9 @@ func enter() -> void:
 	if !player:
 		player = get_tree().get_first_node_in_group("player")
 	choose_random_rot_dir()
-	animation_player.play("new_animation")
-	attack_timer.start()
+	animation_player.play("RESET")
+	animation_player.play("attack")
+	attack_timer.start(0.7)
 	random_movement_timer.start(randf_range(1,3))
 
 func physics_update(delta : float) -> void:
@@ -47,4 +48,5 @@ func choose_random_rot_dir():
 
 
 func _on_attack_timer_timeout() -> void:
+	attack_timer.start(1)
 	enemy.attack(dir_to_player)

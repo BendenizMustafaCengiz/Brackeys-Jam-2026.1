@@ -1,13 +1,7 @@
 [gd_scene format=3 uid="uid://bwuig8b4ffs2m"]
 
-[ext_resource type="Script" uid="uid://b257jam7knx57" path="res://Scripts/projectile.gd" id="1_f8cdk"]
-
-[sub_resource type="Gradient" id="Gradient_yr2qt"]
-interpolation_mode = 2
-colors = PackedColorArray(0.27180573, 0.0008857021, 0.583065, 1, 0.85112727, 0.40919524, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_tl4hk"]
-gradient = SubResource("Gradient_yr2qt")
+[ext_resource type="Script" path="res://Scripts/projectile.gd" id="1_f8cdk"]
+[ext_resource type="Texture2D" uid="uid://csctmtws1oont" path="res://Assets/characters/projectile.png" id="2_yr2qt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d4467"]
 size = Vector2(42, 20)
@@ -18,8 +12,8 @@ script = ExtResource("1_f8cdk")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1046735833]
 position = Vector2(0, -4.7683716e-07)
-scale = Vector2(0.1640625, 19.999996)
-texture = SubResource("GradientTexture1D_tl4hk")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_yr2qt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2147115863]
 shape = SubResource("RectangleShape2D_d4467")
