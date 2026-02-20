@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cghas6541l4nd" path="res://Scripts/States/player_states/idle.gd" id="4_vgqql"]
 [ext_resource type="Script" uid="uid://q6ro8mu4o6gk" path="res://Scripts/States/player_states/run.gd" id="5_fkybt"]
 [ext_resource type="Script" uid="uid://k7wpclwj3vb" path="res://Scripts/States/player_states/attack_1.gd" id="6_3smsa"]
+[ext_resource type="Script" uid="uid://dis3gcnnsl7fa" path="res://Scripts/States/player_states/dash.gd" id="6_tx1dd"]
 [ext_resource type="PackedScene" uid="uid://wggu72pyv2j5" path="res://Scenes/sword.tscn" id="6_x3wgy"]
 [ext_resource type="Script" uid="uid://nv2c8cjbl00c" path="res://Scripts/States/player_states/attack_2.gd" id="7_8erm5"]
 [ext_resource type="Script" uid="uid://bnqudjme7vfd4" path="res://Scripts/States/player_states/attack_3.gd" id="8_f1ek2"]
@@ -58,7 +59,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_f1ek2"]
 resource_name = "dash"
-length = 1.5
+length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -66,7 +67,7 @@ tracks/0/path = NodePath("Sprite2D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 1.2, 1.4),
+"times": PackedFloat32Array(0, 0.2, 1, 1.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0.4, 0.4), Vector2(0.4, 0.32), Vector2(0.4, 0.32), Vector2(0.4, 0.4)]
@@ -78,10 +79,10 @@ tracks/1/path = NodePath("Sprite2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.10000001, 0.3, 0.5, 0.70000005, 0.90000004, 1.1, 1.3000001),
+"times": PackedFloat32Array(0, 0.10000001, 0.3, 0.5, 0.70000005, 0.90000004, 1.1, 1.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(5, 0), Vector2(-5, 0), Vector2(5, 0), Vector2(-5, 0), Vector2(5, 0), Vector2(-5, 0), Vector2(5, 0)]
+"values": [Vector2(0, 0), Vector2(5, 0), Vector2(-5, 0), Vector2(5, 0), Vector2(-5, 0), Vector2(5, 0), Vector2(-5, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_x3wgy"]
@@ -173,9 +174,10 @@ _data = {
 &"run": SubResource("Animation_3smsa")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=946385579 groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=946385579 node_paths=PackedStringArray("dash_cooldown_timer") groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_cvnsp")
+dash_cooldown_timer = NodePath("dash_cooldown")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=213205716]
 scale = Vector2(0.4, 0.4)
@@ -205,7 +207,13 @@ script = ExtResource("5_fkybt")
 player = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="dash" type="Node" parent="StateMachine" unique_id=178541279]
+[node name="dash" type="Node" parent="StateMachine" unique_id=178541279 node_paths=PackedStringArray("dash_cooldown", "dash_timer", "player", "animation_player", "sword")]
+script = ExtResource("6_tx1dd")
+dash_cooldown = NodePath("../../dash_cooldown")
+dash_timer = NodePath("../../dashTimer")
+player = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+sword = NodePath("../../Sword")
 
 [node name="attack1" type="Node" parent="StateMachine" unique_id=1198971753 node_paths=PackedStringArray("sword", "player", "animation_player", "combo_transition_timer")]
 script = ExtResource("6_3smsa")
@@ -246,8 +254,13 @@ offset_bottom = 107.0
 
 [node name="dashTimer" type="Timer" parent="." unique_id=705886418]
 wait_time = 0.3
+one_shot = true
+
+[node name="dash_cooldown" type="Timer" parent="." unique_id=1151464253]
+one_shot = true
 
 [connection signal="timeout" from="comboTransitionTimer" to="StateMachine/attack1" method="_on_combo_transition_timer_timeout"]
 [connection signal="timeout" from="comboTransitionTimer" to="StateMachine/attack2" method="_on_combo_transition_timer_timeout"]
 [connection signal="timeout" from="comboTransitionTimer" to="StateMachine/attack3" method="_on_combo_transition_timer_timeout"]
-[connection signal="timeout" from="dashTimer" to="StateMachine/attack3" method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="dashTimer" to="StateMachine/dash" method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="dash_cooldown" to="." method="_on_dash_cooldown_timeout"]
