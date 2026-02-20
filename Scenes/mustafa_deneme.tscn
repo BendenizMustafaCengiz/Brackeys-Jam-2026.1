@@ -1,12 +1,16 @@
 [gd_scene format=3 uid="uid://bof5rxdy2vbd8"]
 
 [ext_resource type="PackedScene" uid="uid://c8eh4pqxs4pdn" path="res://Scenes/player.tscn" id="1_8wtqn"]
-[ext_resource type="PackedScene" uid="uid://d3515fw65lvj" path="res://Scenes/enemy_2.tscn" id="2_8wtqn"]
+[ext_resource type="PackedScene" uid="uid://ke06myf5cmfu" path="res://Scenes/enemy_ranged.tscn" id="2_8wtqn"]
+[ext_resource type="PackedScene" uid="uid://bwuig8b4ffs2m" path="res://Scenes/projectile.tscn" id="3_jdlw4"]
 
 [node name="mustafa_deneme" type="Node" unique_id=1994785618]
 
 [node name="Player" parent="." unique_id=946385579 instance=ExtResource("1_8wtqn")]
 position = Vector2(269, 457)
 
-[node name="Enemy2" parent="." unique_id=725837146 instance=ExtResource("2_8wtqn")]
-position = Vector2(1264, 260)
+[node name="EnemyRanged" parent="." unique_id=602971446 instance=ExtResource("2_8wtqn")]
+position = Vector2(1376, 508)
+
+[node name="Projectile" parent="." unique_id=861671206 instance=ExtResource("3_jdlw4")]
+position = Vector2(889, 330)
