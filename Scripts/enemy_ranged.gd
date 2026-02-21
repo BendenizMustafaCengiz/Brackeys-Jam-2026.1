@@ -26,6 +26,7 @@ func init_stats(room_no: int):
 	damage = 10 + room_no * 3
 	attack_area.damage = damage
 	max_health = 100 + room_no * 20
+	knocback_mult = 1.5
 
 func attack(dir: Vector2):
 	var new_proj = PROJ.instantiate()

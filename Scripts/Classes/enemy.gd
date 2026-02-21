@@ -6,8 +6,9 @@ var speed : float
 var damage : int
 var HPBar : Control
 var attack_area : Area2D
+var knocback_mult: float
 
-func hurt(amount : int):
+func hurt(amount : int, kb_dir: Vector2, kb: float):
 	health = health - amount
 	
 	if health <= 0:
@@ -15,6 +16,14 @@ func hurt(amount : int):
 	
 	if HPBar:
 		HPBar.update_bar(health, max_health)
+	
+	#knockback logic
+	var final_pos = global_position + kb_dir * kb * knocback_mult
+	var tween: Tween = create_tween()
+	tween.tween_property(self, "global_position", final_pos, 0.2)
+	
+	
+	
 
 
 func die():
