@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cra7luprfwkbv"
-path="res://.godot/imported/frame_inner_white.png-15f2760adf0e66b291ae5ffe6dff1d3e.ctex"
+uid="uid://dlqdu5pj2r5e0"
+path="res://.godot/imported/frm_green.png-efc7f1b4028a1820fffa817539190dfe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/hp bar/frame_inner_white.png"
-dest_files=["res://.godot/imported/frame_inner_white.png-15f2760adf0e66b291ae5ffe6dff1d3e.ctex"]
+source_file="res://Assets/hp bar/frm_green.png"
+dest_files=["res://.godot/imported/frm_green.png-efc7f1b4028a1820fffa817539190dfe.ctex"]
 
 [params]
 

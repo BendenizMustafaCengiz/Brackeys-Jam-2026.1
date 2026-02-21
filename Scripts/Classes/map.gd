@@ -16,7 +16,6 @@ func _init() -> void:
 	
 	init_neighbours()
 	
-	rooms[2][2].visited = true
 	current_room = rooms[2][2]
 	
 	

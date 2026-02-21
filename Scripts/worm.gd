@@ -10,17 +10,19 @@ var exited_attack_range = false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var wait_timer: Timer = $WaitTimer
 @onready var wonder_timer: Timer = $WonderTimer
-@onready var attack_timer: Timer = $AttackTimer
 @onready var sprite: Sprite2D = $Sprite2D
 
 func _ready() -> void:
+	HPBar = $StatBar
+	attack_area = $AttackArea
 	init_stats(Save.rooms_cleared)
 
 func init_stats(rooms_cleared : int) -> void:
-	damage = rooms_cleared * 10 + 50
-	speed = 400
-	max_health = rooms_cleared * 10 + 500
+	damage = rooms_cleared * 1 + 5
+	speed = 300
+	health = rooms_cleared * 5 + 40
 	max_health = health
+	attack_area.damage = damage
 
 
 func _physics_process(delta: float) -> void:
@@ -37,8 +39,12 @@ func _physics_process(delta: float) -> void:
 		position += speed * direction * delta
 		if direction.x > 0:
 			sprite.flip_h = true
+			if animation_player.current_animation != "Move_Right":
+				animation_player.play("Move_Right")
 		else:
 			sprite.flip_h = false
+			if animation_player.current_animation != "Move_Left":
+				animation_player.play("Move_Left")
 	
 	move_and_slide()
 
@@ -74,25 +80,3 @@ func _on_wonder_timer_timeout() -> void:
 	wonder_velocity = Vector2(0,0)
 	
 	animation_player.play("Idle")
-
-func _on_attacking_area_body_entered(body: Node2D) -> void:
-	if body is Player and can_attack:
-		exited_attack_range = false
-		player.hit(damage)
-		print('player hitted')
-		can_attack = false
-		attack_timer.start()
-
-
-func _on_attack_timer_timeout() -> void:
-	if not exited_attack_range:
-		player.hit(damage)
-		attack_timer.start()
-		print('player hitted')
-	else:
-		can_attack = true
-
-
-func _on_attacking_area_body_exited(body: Node2D) -> void:
-	if body is Player:
-		exited_attack_range = true

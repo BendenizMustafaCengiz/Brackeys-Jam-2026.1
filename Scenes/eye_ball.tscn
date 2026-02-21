@@ -7,10 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://dfxtppoud5ax8" path="res://Assets/characters/eyeball/eyeball_frame3.png" id="3_pb8vu"]
 [ext_resource type="PackedScene" uid="uid://cjdiambhb5g1e" path="res://Scenes/laser.tscn" id="6_b37rs"]
 [ext_resource type="PackedScene" uid="uid://dip7l8ntmfd5f" path="res://Scenes/attack_area.tscn" id="7_252s2"]
+[ext_resource type="PackedScene" uid="uid://bav527wafvxn0" path="res://Scenes/stat_bar.tscn" id="8_m1rxm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xh4iv"]
-radius = 64.0
-height = 160.0
+radius = 31.0
+height = 70.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b37rs"]
 animations = [{
@@ -176,11 +177,10 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m1rxm"]
-radius = 74.28571
-height = 182.85713
+radius = 34.0
+height = 80.0
 
 [node name="EyeBall" type="CharacterBody2D" unique_id=1858000069]
-scale = Vector2(0.7, 0.7)
 motion_mode = 1
 script = ExtResource("1_pb8vu")
 
@@ -189,15 +189,18 @@ shape = SubResource("CapsuleShape2D_xh4iv")
 
 [node name="RWing" type="Sprite2D" parent="." unique_id=1081260466]
 position = Vector2(0, 10)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_xh4iv")
 offset = Vector2(112, 0)
 
 [node name="LWing" type="Sprite2D" parent="." unique_id=1541387180]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_xh4iv")
 offset = Vector2(-112, 0)
 flip_h = true
 
 [node name="AnimSprite" type="AnimatedSprite2D" parent="." unique_id=1477093035]
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_b37rs")
 animation = &"Blink"
 autoplay = "Blink"
@@ -214,8 +217,17 @@ one_shot = true
 is_casting = false
 
 [node name="AttackArea" parent="." unique_id=150417490 instance=ExtResource("7_252s2")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1177096763]
 shape = SubResource("CapsuleShape2D_m1rxm")
+
+[node name="StatBar" parent="." unique_id=834999668 instance=ExtResource("8_m1rxm")]
+offset_left = -58.0
+offset_top = -73.0
+offset_right = -58.0
+offset_bottom = -73.0
+low_hp_pulse = false
+damage_shake = false
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

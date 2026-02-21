@@ -1,12 +1,14 @@
 extends Area2D
 
-var damage: int = 10
+var damage: int
 var speed: int = 800
 var shooting_dir: Vector2 = Vector2.ZERO
 var dist: float = 0.0
 var random_rot : float
 var random_rot_dir: int 
 
+func _ready() -> void:
+	damage = 10 + Save.rooms_cleared * 3
 
 func _process(delta: float) -> void:
 	if shooting_dir != Vector2.ZERO:
@@ -15,10 +17,10 @@ func _process(delta: float) -> void:
 		if dist > 2500:
 			queue_free()
 		rotation+= random_rot*random_rot_dir*delta
+
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		body.hit(damage)
-
 
 func shoot(dir: Vector2):
 	shooting_dir = dir

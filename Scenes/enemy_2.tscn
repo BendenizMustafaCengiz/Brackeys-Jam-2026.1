@@ -7,9 +7,10 @@
 [ext_resource type="Script" uid="uid://db67p1i6af85i" path="res://Scripts/States/enemy_states/enemy2_dash.gd" id="5_4gdgy"]
 [ext_resource type="Script" uid="uid://d2rbav3fv86b1" path="res://Scripts/States/enemy_states/enemy2_wait.gd" id="6_8n4gd"]
 [ext_resource type="PackedScene" uid="uid://dip7l8ntmfd5f" path="res://Scenes/attack_area.tscn" id="7_pfsys"]
+[ext_resource type="PackedScene" uid="uid://bav527wafvxn0" path="res://Scenes/stat_bar.tscn" id="8_plxki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pfsys"]
-size = Vector2(185, 174)
+size = Vector2(112, 104)
 
 [sub_resource type="Animation" id="Animation_8n4gd"]
 length = 0.001
@@ -174,14 +175,14 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_plxki"]
-size = Vector2(204, 192)
+size = Vector2(126, 116)
 
 [node name="Enemy2" type="CharacterBody2D" unique_id=725837146]
 motion_mode = 1
 script = ExtResource("1_527ua")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1545286898]
-position = Vector2(-1.5, -7)
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_pfsys")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=62464147]
@@ -228,8 +229,16 @@ offset_bottom = 121.0
 [node name="AttackArea" parent="." unique_id=150417490 instance=ExtResource("7_pfsys")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1883155144]
-position = Vector2(-2, -8)
+position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_plxki")
+
+[node name="StatBar" parent="." unique_id=834999668 instance=ExtResource("8_plxki")]
+offset_left = -58.0
+offset_top = -141.0
+offset_right = -58.0
+offset_bottom = -141.0
+low_hp_pulse = false
+damage_shake = false
 
 [connection signal="timeout" from="follow_timer" to="StateMachine/follow" method="_on_follow_time_timeout"]
 [connection signal="timeout" from="wait_timer" to="StateMachine/wait" method="_on_wait_timer_timeout"]

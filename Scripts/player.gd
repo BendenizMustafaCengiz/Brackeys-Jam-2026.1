@@ -12,6 +12,11 @@ var speed : Vector2 = Vector2.ZERO
 var can_dash: bool = true
 var dash_cooldown : float = 1
 
+var health := 100
+var max_health := 100
+
+@onready var health_bar: StatBar = $CanvasLayer/StatBar
+
 @export var combo_transition_time : float = 0.5
 @export var dash_cooldown_timer: Timer
 
@@ -34,7 +39,12 @@ func move(dir : Vector2, delta: float)-> void:
 
 
 func hit(amount : int) -> void:
-	pass
+	health = health - amount
+	
+	if health <= 0:
+		print("player died")
+		
+	health_bar.update_bar(health, max_health)
 
 
 func _on_dash_cooldown_timeout() -> void:

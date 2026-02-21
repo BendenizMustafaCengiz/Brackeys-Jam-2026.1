@@ -7,9 +7,10 @@
 [ext_resource type="Script" path="res://Scripts/States/enemy_states/enemy_ranged_retreat.gd" id="5_5j68v"]
 [ext_resource type="Script" path="res://Scripts/States/enemy_states/enemy_ranged_attack.gd" id="5_kowwf"]
 [ext_resource type="PackedScene" uid="uid://dip7l8ntmfd5f" path="res://Scenes/attack_area.tscn" id="7_t1bbw"]
+[ext_resource type="PackedScene" uid="uid://bav527wafvxn0" path="res://Scenes/stat_bar.tscn" id="8_g6gig"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t233f"]
-size = Vector2(144, 144)
+size = Vector2(108, 103)
 
 [sub_resource type="Animation" id="Animation_5j68v"]
 length = 0.001
@@ -173,7 +174,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t1bbw"]
-size = Vector2(160, 160)
+size = Vector2(126, 116)
 
 [node name="EnemyRanged" type="CharacterBody2D" unique_id=602971446]
 motion_mode = 1
@@ -185,6 +186,7 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_5j68v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1403542938]
+position = Vector2(-4, 4.5)
 shape = SubResource("RectangleShape2D_t233f")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1071155965 node_paths=PackedStringArray("initial_state", "state_label")]
@@ -228,7 +230,16 @@ position = Vector2(-7, 9)
 [node name="AttackArea" parent="." unique_id=150417490 instance=ExtResource("7_t1bbw")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1980197901]
+position = Vector2(-4, 6)
 shape = SubResource("RectangleShape2D_t1bbw")
+
+[node name="StatBar" parent="." unique_id=834999668 instance=ExtResource("8_g6gig")]
+offset_left = -59.0
+offset_top = -87.0
+offset_right = -59.0
+offset_bottom = -87.0
+low_hp_pulse = false
+damage_shake = false
 
 [connection signal="timeout" from="attack_timer" to="StateMachine/attack" method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="random_movement_timer" to="StateMachine/attack" method="_on_random_movement_timer_timeout"]
