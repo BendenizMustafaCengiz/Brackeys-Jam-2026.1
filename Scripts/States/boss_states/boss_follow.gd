@@ -10,7 +10,7 @@ func enter() -> void:
 	if !player:
 		player = get_tree().get_first_node_in_group("player")
 	animation_player.play("move")
-	follow_timer.start(randf_range(2,4))
+	follow_timer.start(randf_range(2,3.5))
 
 
 func physics_update(delta : float) -> void:
@@ -29,7 +29,10 @@ func _on_follow_timer_timeout() -> void:
 		random_change_state()
 
 func random_change_state():
-	if randf() > 0.5:
+	var random_num = randf()
+	if random_num > 0.33:
 		transitioned.emit(self,"ranged1")
-	else:
+	elif random_num > 0.67:
 		transitioned.emit(self,"ranged2")
+	else:
+		transitioned.emit(self, "summon")

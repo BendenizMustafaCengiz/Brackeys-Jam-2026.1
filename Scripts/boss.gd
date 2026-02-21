@@ -1,18 +1,20 @@
-extends Enemy
+extends CharacterBody2D
 
+var health: int = 1000
+var speed: int = 300
+var damage: int = 50
 const melee_range = 275
-const min_wait_range = 250
+const min_wait_range = 240
 const safe_range = 500
 var is_player_in_melee_range :bool = false
 var player : Player
+@export var attack_area: Area2D
 
 func _ready() -> void:
-	inint_stats(Save.rooms_cleared)
+	attack_area.damage = 20 #rastgele verdim normalden fazla olsun diye sen kafana göre değiştir
+	
 
 
-func inint_stats(_room_no: int):
-	speed = 300
-	damage = 100
 
 
 func _physics_process(_delta: float) -> void:
@@ -36,3 +38,15 @@ func _on_melee_attack_area_body_entered(body: Node2D) -> void:
 func _on_melee_attack_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		is_player_in_melee_range = false
+
+func hurt(amount : int, _kb_dir: Vector2, _kb: float):
+	health = health - amount
+	
+	if health <= 0:
+		die()
+	
+func check_last_enemy():
+	pass
+
+func die():
+	queue_free()

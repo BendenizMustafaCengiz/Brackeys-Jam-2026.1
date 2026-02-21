@@ -36,4 +36,4 @@ func random_state_change():
 	if rand_num< 0.75:
 		transitioned.emit(self,"follow")
 	else:
-		transitioned.emit(self,"follow")
+		transitioned.emit(self,"wait")
