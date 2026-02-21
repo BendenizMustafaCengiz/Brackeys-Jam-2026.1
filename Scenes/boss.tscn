@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bg238evahr246" path="res://Scripts/States/boss_states/boss_ranged_2.gd" id="7_odcco"]
 [ext_resource type="Script" uid="uid://c0uh27ypu4lfc" path="res://Scripts/States/boss_states/retreat.gd" id="7_qtle2"]
 [ext_resource type="Script" uid="uid://bv76smgnrh1yl" path="res://Scripts/States/boss_states/boss_summon.gd" id="10_q76ad"]
+[ext_resource type="PackedScene" uid="uid://dip7l8ntmfd5f" path="res://Scenes/attack_area.tscn" id="12_lel8w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ukjjc"]
 size = Vector2(149, 263)
@@ -156,7 +157,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_nuv35"]
 resource_name = "melee"
-length = 0.53333336
+length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -164,7 +165,7 @@ tracks/0/path = NodePath("Sprite2D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.5, 0.53333336),
+"times": PackedFloat32Array(0, 0.46666667, 0.96666664, 1.2),
 "transitions": PackedFloat32Array(1, 8.57417, 0.45062527, 1),
 "update": 0,
 "values": [Vector2(0.6, 0.6), Vector2(0.6, 0.54), Vector2(0.7, 0.75), Vector2(0.6, 0.6)]
@@ -176,7 +177,7 @@ tracks/1/path = NodePath("Sprite2D:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.13333334, 0.16666667),
+"times": PackedFloat32Array(0, 0.1, 0.36666667, 0.46666667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, -0.08726646, 0.08726646, 0.0]
@@ -188,7 +189,7 @@ tracks/2/path = NodePath("AttackAreaSprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.53333336),
+"times": PackedFloat32Array(0, 1.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -200,7 +201,7 @@ tracks/3/path = NodePath("AttackAreaSprite:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.5, 0.53333336),
+"times": PackedFloat32Array(0, 0.36666667, 0.96666664, 1.2),
 "transitions": PackedFloat32Array(1, 1.035265, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(0.2, 1, 1, 0.6627451), Color(1, 1, 1, 0.19607843)]
@@ -340,9 +341,13 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_42olf"]
 radius = 363.03442
 
-[node name="Boss" type="CharacterBody2D" unique_id=686628583]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xjeg"]
+size = Vector2(176, 284)
+
+[node name="Boss" type="CharacterBody2D" unique_id=686628583 node_paths=PackedStringArray("attack_area")]
 motion_mode = 1
 script = ExtResource("1_wwfse")
+attack_area = NodePath("AttackArea")
 
 [node name="AttackAreaSprite" type="Sprite2D" parent="." unique_id=366584904]
 visible = false
@@ -396,8 +401,9 @@ collision_shape_2d = NodePath("../../CollisionShape2D")
 boss = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="summon" type="Node" parent="StateMachine" unique_id=930861150 node_paths=PackedStringArray("boss", "animation_player")]
+[node name="summon" type="Node" parent="StateMachine" unique_id=930861150 node_paths=PackedStringArray("summoned_enemies", "boss", "animation_player")]
 script = ExtResource("10_q76ad")
+summoned_enemies = NodePath("../../SummonedEnemies")
 boss = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 
@@ -421,6 +427,14 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="melee_attack_area" unique_id=1204267160]
 shape = SubResource("CircleShape2D_42olf")
+
+[node name="SummonedEnemies" type="Node2D" parent="." unique_id=1354240378]
+top_level = true
+
+[node name="AttackArea" parent="." unique_id=150417490 instance=ExtResource("12_lel8w")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=348421648]
+shape = SubResource("RectangleShape2D_6xjeg")
 
 [connection signal="timeout" from="WaitTimer" to="StateMachine/wait" method="_on_wait_timer_timeout"]
 [connection signal="timeout" from="FollowTimer" to="StateMachine/follow" method="_on_follow_timer_timeout"]
