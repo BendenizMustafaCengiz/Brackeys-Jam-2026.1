@@ -23,6 +23,7 @@ func init_stats(rooms_cleared : int) -> void:
 	health = rooms_cleared * 5 + 40
 	max_health = health
 	attack_area.damage = damage
+	knocback_mult = 1.5
 
 
 func _physics_process(delta: float) -> void:

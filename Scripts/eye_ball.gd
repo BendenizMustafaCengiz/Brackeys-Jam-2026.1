@@ -26,6 +26,7 @@ func init_stats(rooms_cleared : int) -> void:
 	health = max_health
 	damage = rooms_cleared + 5
 	attack_area.damage = damage
+	knocback_mult = 2
 
 
 
