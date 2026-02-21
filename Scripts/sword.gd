@@ -19,9 +19,6 @@ var enemiesInAtt2Range: Array = []
 var enemiesInAtt3Range: Array = []
 var enemiesInDashRange: Array = []
 
-func _ready() -> void:
-	damage = 20
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

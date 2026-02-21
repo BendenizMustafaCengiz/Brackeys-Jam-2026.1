@@ -8,6 +8,7 @@
 script = ExtResource("1_dbgas")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=969470591]
+visible = false
 
 [node name="BG" type="TextureRect" parent="CanvasLayer" unique_id=1980075617]
 modulate = Color(0.039215688, 0.039215688, 0.039215688, 0)

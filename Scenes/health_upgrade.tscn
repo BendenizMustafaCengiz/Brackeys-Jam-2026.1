@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://c20fffc3qfh2m"]
+
+[ext_resource type="Script" uid="uid://bdt27q85cxk0v" path="res://Scripts/health_upgrade.gd" id="1_c5ve4"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_wortc"]
+
+[sub_resource type="Gradient" id="Gradient_wltld"]
+colors = PackedColorArray(0.37821004, 0.081915595, 4.813075e-08, 1, 0.890323, 0.24593052, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_37got"]
+gradient = SubResource("Gradient_wltld")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_gersm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wortc"]
+size = Vector2(256, 320)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4kt86"]
+font_size = 24
+font_color = Color(0.85490197, 0.85490197, 0.85490197, 1)
+
+[node name="HealthUpgrade" type="Area2D" unique_id=879011355]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_c5ve4")
+
+[node name="Frame" type="Sprite2D" parent="." unique_id=867575738]
+modulate = Color(0.85490197, 0.85490197, 0.85490197, 1)
+scale = Vector2(266.66663, 330.66663)
+texture = SubResource("CanvasTexture_wortc")
+
+[node name="Grad" type="Sprite2D" parent="." unique_id=1842559778]
+position = Vector2(6.4373016e-06, 3.8146973e-05)
+scale = Vector2(3.9999993, 5.0000005)
+texture = SubResource("GradientTexture2D_37got")
+
+[node name="Line" type="Sprite2D" parent="." unique_id=405536353]
+modulate = Color(0.85348755, 0.85348773, 0.8534877, 1)
+position = Vector2(0, -72)
+scale = Vector2(239.99997, 16.000021)
+texture = SubResource("CanvasTexture_gersm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=685390440]
+visible = false
+shape = SubResource("RectangleShape2D_wortc")
+
+[node name="TitleLabel" type="Label" parent="." unique_id=1541413003]
+offset_left = -128.0
+offset_top = -144.0
+offset_right = 128.0
+offset_bottom = -96.0
+theme_override_colors/font_color = Color(0.85490197, 0.85490197, 0.85490197, 1)
+theme_override_font_sizes/font_size = 32
+text = "Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescriptionLabel" type="Label" parent="." unique_id=1312315614]
+offset_left = -120.0
+offset_top = -56.0
+offset_right = 120.0
+offset_bottom = 152.0
+theme_override_colors/font_color = Color(0.85490197, 0.85490197, 0.85490197, 1)
+theme_override_font_sizes/font_size = 32
+text = "Description"
+label_settings = SubResource("LabelSettings_4kt86")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

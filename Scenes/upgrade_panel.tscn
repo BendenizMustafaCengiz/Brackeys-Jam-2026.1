@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://djh3qnny6ycji"]
+
+[ext_resource type="Script" uid="uid://peprludp7mqf" path="res://Scripts/upgrade_panel.gd" id="1_37got"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_37got"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_37got"]
+font_size = 80
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0.75686276)
+shadow_offset = Vector2(0, 10)
+
+[node name="UpgradePanel" type="CanvasLayer" unique_id=1374264674]
+visible = false
+script = ExtResource("1_37got")
+
+[node name="BG" type="TextureRect" parent="." unique_id=301380030]
+modulate = Color(0.4911909, 0.4911909, 0.4911909, 0.47843137)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture = SubResource("CanvasTexture_37got")
+
+[node name="Label" type="Label" parent="." unique_id=483606583]
+offset_top = 128.0
+offset_right = 1920.0
+offset_bottom = 320.0
+text = "Choose Your Upgrade"
+label_settings = SubResource("LabelSettings_37got")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=495889370]
+offset_top = 24.0
+offset_right = 1920.0
+offset_bottom = 216.0
+theme_override_colors/default_color = Color(0, 0.5764706, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.3019608, 0.28235295, 0.2509804, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[wave]R o o m    C l e a r e d"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OpContainer" type="Node2D" parent="." unique_id=1806297369]

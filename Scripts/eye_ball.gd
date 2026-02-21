@@ -18,7 +18,24 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	
 
-
+func die():
+	get_parent().get_parent().check_last_enemy()
+	
+	laser.enabled = false
+	
+	speed = 0
+	attack_area.disable_mode = CollisionObject2D.DISABLE_MODE_KEEP_ACTIVE
+	
+	var tween = create_tween()
+	tween.set_parallel(true)
+	
+	tween.tween_property(self, "modulate", Color(0,0,0,0), 0.5)
+	tween.tween_property(self, "rotation_degrees", 20, 0.5)
+	tween.tween_property(self, "scale", Vector2(0.8, 0.8), 0.5)
+	
+	await tween.finished
+	
+	queue_free()
 
 func init_stats(rooms_cleared : int) -> void:
 	speed = 300
