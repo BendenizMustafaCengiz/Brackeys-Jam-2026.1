@@ -38,7 +38,7 @@ func generate_minimap() -> void:
 			var y = space * (j + 1) + room_size * j
 			
 			var room_color = Color.DIM_GRAY
-			if rooms[i][j].visited == true:
+			if rooms[i][j].visited == true or rooms[i][j] == map.current_room:
 				room_color = Color.CORNFLOWER_BLUE
 			
 			map_image.fill_rect(Rect2i(x, y, room_size, room_size), room_color)
@@ -60,6 +60,7 @@ func _ready() -> void:
 
 
 func change_room(dir : String):
+	map.current_room.visited = true
 	match dir:
 		"right":
 			map.current_room = map.current_room.right_room
@@ -69,4 +70,3 @@ func change_room(dir : String):
 			map.current_room = map.current_room.up_room
 		"down":
 			map.current_room = map.current_room.down_room
-	map.current_room.visited = true

@@ -15,11 +15,8 @@ var back_tween : Tween
 var pulse_tween : Tween = null
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):      
-		update_bar(back_bar.value - 10, 100)
-
 func update_bar(current: float, max_value: float) -> void:
+	
 	var pct = clamp(current / max_value, 0.0, 1.0)
 	
 	front_bar.max_value = max_value

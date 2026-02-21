@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://l771anil5p4j"
-path="res://.godot/imported/frame_inner_grey.png-cd8238edf9aa530638f8da1b21e425d2.ctex"
+uid="uid://c237g3buiti0b"
+path="res://.godot/imported/spawn_sign.png-d06f53f9d78c2fb81dade8dcda25a4ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/hp bar/frame_inner_grey.png"
-dest_files=["res://.godot/imported/frame_inner_grey.png-cd8238edf9aa530638f8da1b21e425d2.ctex"]
+source_file="res://Assets/spawn_sign.png"
+dest_files=["res://.godot/imported/spawn_sign.png-d06f53f9d78c2fb81dade8dcda25a4ad.ctex"]
 
 [params]
 

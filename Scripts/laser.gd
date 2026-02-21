@@ -13,6 +13,7 @@ var tween: Tween = null
 @onready var line_width := line_2d.width
 @onready var damage_cooldown: Timer = $DamageCooldown
 var cooldown_is_active = false
+var damage : int
 
 func _ready() -> void:
 	
@@ -23,6 +24,9 @@ func _ready() -> void:
 	line_2d.visible = false
 	
 	set_is_casting(is_casting)
+	
+	@warning_ignore("integer_division")
+	damage = Save.rooms_cleared / 2 + 2
 
 func _physics_process(delta: float) -> void:
 	target_position.x = move_toward(
@@ -36,12 +40,12 @@ func _physics_process(delta: float) -> void:
 	
 	if is_colliding():
 		laser_end_position = to_local(get_collision_point())
-		if get_collider() is Player and not cooldown_is_active:
-			get_collider().hit(20)
+		var collider = get_collider()
+		if collider is Player and not cooldown_is_active:
+			print('laser hit player')
+			collider.hit(damage)
 			damage_cooldown.start()
 			cooldown_is_active = true
-			print("laser hitted")
-			
 	
 	line_2d.points[1] = laser_end_position
 	

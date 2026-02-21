@@ -1,7 +1,7 @@
 extends Marker2D
 class_name Sword
 
-var damage: int
+var damage : int
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 var attacking: bool = false
 @onready var sprite: Sprite2D = $Sprite2D
@@ -13,7 +13,7 @@ var enemiesInAtt3Range: Array = []
 var enemiesInDashRange: Array = []
 
 func _ready() -> void:
-	pass
+	damage = 20
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
