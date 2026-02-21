@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://civwfyl4mnevm"]
+
+[ext_resource type="Script" uid="uid://b3kjlhqgp0tju" path="res://Scripts/player_stats.gd" id="1_vjobs"]
+
+[node name="PlayerStats" type="Node" unique_id=554634207]
+script = ExtResource("1_vjobs")

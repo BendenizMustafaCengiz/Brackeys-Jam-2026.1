@@ -20,25 +20,31 @@ var spawn_sign : PackedScene = preload("res://Scenes/Spawn_Sign.tscn")
 var cleared : bool = false
 static var init_player_pos : Vector2 = Vector2(0,0)
 
+@onready var doors: StaticBody2D = $Doors
+
+@onready var die_screen: Node2D = $DieScreen
+@onready var upgrade_panel: UpgradePanel = $UpgradePanel
+
 func _ready() -> void:
 	player.position = init_player_pos
+	player.init_stats()
 	create_enemies(Save.rooms_cleared)
 	room = mini_map.map.current_room
 	print(room.map_pos)
 	if not room.visited:
 		spawn_timer.start()
-		print('timer started')
 	else:
 		open_doors()
 
 func check_last_enemy()-> void:
-	if enemies_node.get_child_count() == 1 and enemies.size() == 0:
+	if enemies_node.get_child_count() == 1 and enemies.size() == 0 and signs.get_child_count() == 0:
 		spawn_timer.paused = true
 		open_doors()
+		upgrade_panel.activate()
 
 func create_enemies(rooms_cleared: int) -> void:
 	enemies.clear()
-	var enemy_count = 10 + rooms_cleared
+	var enemy_count = 1 + rooms_cleared
 	
 	for i in range(enemy_count):
 		var dice = randf_range(0,100)
@@ -107,6 +113,8 @@ func _process(_delta: float) -> void:
 
 #Right exit
 func _on_right_exit_body_entered(body: Node2D) -> void:
+	if room.right_room == null:
+		return
 	if body.name == "Player":
 		mini_map.change_room("right")
 		init_player_pos = Vector2(-900,0)
@@ -115,6 +123,8 @@ func _on_right_exit_body_entered(body: Node2D) -> void:
 
 #Left exit
 func _on_left_exit_body_entered(body: Node2D) -> void:
+	if room.left_room == null:
+		return
 	if body.name == "Player":
 		ChangeScene.change_scene("res://Scenes/room_scene.tscn")
 		mini_map.change_room("left")
@@ -123,6 +133,8 @@ func _on_left_exit_body_entered(body: Node2D) -> void:
 
 #Down exit
 func _on_down_exit_body_entered(body: Node2D) -> void:
+	if room.down_room == null:
+		return
 	if body.name == "Player":
 		ChangeScene.change_scene("res://Scenes/room_scene.tscn")
 		mini_map.change_room("down")
@@ -131,35 +143,29 @@ func _on_down_exit_body_entered(body: Node2D) -> void:
 
 #Up exit
 func _on_up_exit_body_entered(body: Node2D) -> void:
+	if room.up_room == null:
+		return
 	if body.name == "Player":
 		ChangeScene.change_scene("res://Scenes/room_scene.tscn")
 		mini_map.change_room("up")
 		Save.rooms_cleared += 1
 		init_player_pos = Vector2(0,900)
 
+func game_over():
+	die_screen.activate()
 
 func open_doors() -> void:
+	print("doors opening")
+	
 	room.visited = true
 	
 	var tween = create_tween()
 	tween.set_parallel(true)
 	
-	if room.left_room:
-		tween.tween_property($Doors/LeftDoor/Sprite2D, "modulate", Color(1.0, 1.0, 1.0, 0.0), 1.0)
-		$Doors/LeftDoor/CollisionShape2D.disabled = true
-	if room.right_room:
-		tween.tween_property($Doors/RightDoor/Sprite2D, "modulate", Color(1.0, 1.0, 1.0, 0.0), 1.0)
-		$Doors/RightDoor/CollisionShape2D.disabled = true
-	if room.down_room:
-		tween.tween_property($Doors/DownDoor/Sprite2D, "modulate", Color(1.0, 1.0, 1.0, 0.0), 1.0)
-		$Doors/DownDoor/CollisionShape2D.disabled = true
-	if room.up_room:
-		tween.tween_property($Doors/UpDoor/Sprite2D, "modulate", Color(1.0, 1.0, 1.0, 0.0), 1.0)
-		$Doors/UpDoor/CollisionShape2D.disabled = true
-
+	tween.tween_property(doors, "modulate", Color(0,0,0,0), 1)
+	doors.collision_layer = 4
 
 func _on_spawn_timer_timeout() -> void:
-	print('timer ended')
 	
 	var count := randi_range(3, 6)
 	summon_enemies(count)

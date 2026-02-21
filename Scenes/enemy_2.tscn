@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bav527wafvxn0" path="res://Scenes/stat_bar.tscn" id="8_plxki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pfsys"]
-size = Vector2(112, 104)
+size = Vector2(126, 119)
 
 [sub_resource type="Animation" id="Animation_8n4gd"]
 length = 0.001
@@ -24,7 +24,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.8, 0.8)]
+"values": [Vector2(0.6, 0.6)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -100,7 +100,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.40000004, 0.6666667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0.8, 0.8), Vector2(0.75, 0.75), Vector2(0.75, 0.75), Vector2(0.8, 0.8)]
+"values": [Vector2(0.6, 0.6), Vector2(0.56, 0.56), Vector2(0.56, 0.56), Vector2(0.6, 0.6)]
 }
 
 [sub_resource type="Animation" id="Animation_pfsys"]
@@ -116,7 +116,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.10000001, 0.3, 0.43333337, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0.8, 0.8), Vector2(0.8, 0.7), Vector2(0.8, 0.9), Vector2(0.8, 0.72), Vector2(0.8, 0.8)]
+"values": [Vector2(0.6, 0.6), Vector2(0.6, 0.526), Vector2(0.6, 0.676), Vector2(0.6, 0.54), Vector2(0.6, 0.6)]
 }
 
 [sub_resource type="Animation" id="Animation_plxki"]
@@ -145,7 +145,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.16666667, 0.4, 0.6333334),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0.8, 0.8), Vector2(0.8, 0.76), Vector2(0.8, 0.84), Vector2(0.8, 0.76)]
+"values": [Vector2(0.6, 0.6), Vector2(0.6, 0.57), Vector2(0.6, 0.63), Vector2(0.6, 0.57)]
 }
 
 [sub_resource type="Animation" id="Animation_0o7g4"]
@@ -162,7 +162,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.46666667, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0.8, 0.8), Vector2(0.8, 0.76), Vector2(0.8, 0.8)]
+"values": [Vector2(0.6, 0.6), Vector2(0.6, 0.57), Vector2(0.6, 0.6)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4gdgy"]
@@ -175,18 +175,18 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_plxki"]
-size = Vector2(126, 116)
+size = Vector2(145, 137)
 
 [node name="Enemy2" type="CharacterBody2D" unique_id=725837146]
 motion_mode = 1
 script = ExtResource("1_527ua")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1545286898]
-position = Vector2(0, -4)
+position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_pfsys")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=62464147]
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_8n4gd")
 offset = Vector2(0, 40)
 
@@ -229,14 +229,14 @@ offset_bottom = 121.0
 [node name="AttackArea" parent="." unique_id=150417490 instance=ExtResource("7_pfsys")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1883155144]
-position = Vector2(0, -5)
+position = Vector2(-0.5, -5.5)
 shape = SubResource("RectangleShape2D_plxki")
 
 [node name="StatBar" parent="." unique_id=834999668 instance=ExtResource("8_plxki")]
-offset_left = -58.0
-offset_top = -141.0
-offset_right = -58.0
-offset_bottom = -141.0
+offset_left = -59.0
+offset_top = -108.0
+offset_right = -59.0
+offset_bottom = -108.0
 low_hp_pulse = false
 damage_shake = false
 
