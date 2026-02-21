@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dyyy5pseu1wu6"]
+[gd_scene format=3 uid="uid://2fcsnt8ednya"]
 
 [ext_resource type="Script" uid="uid://cde5wxlluh6q3" path="res://Scripts/enemy_2.gd" id="1_527ua"]
 [ext_resource type="Texture2D" uid="uid://oxeykfqg4iet" path="res://Assets/characters/slime_monster.png" id="2_8n4gd"]
@@ -192,7 +192,7 @@ offset = Vector2(0, 40)
 
 [node name="StateMachine" type="Node" parent="." unique_id=2010685923 node_paths=PackedStringArray("initial_state", "state_label")]
 script = ExtResource("2_48bj6")
-initial_state = NodePath("wait")
+initial_state = NodePath("follow")
 state_label = NodePath("../Label")
 
 [node name="follow" type="Node" parent="StateMachine" unique_id=596724296 node_paths=PackedStringArray("follow_timer", "enemy", "animation_player")]

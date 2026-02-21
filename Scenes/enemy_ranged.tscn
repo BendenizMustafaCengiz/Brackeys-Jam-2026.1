@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://mhfidpknp1ci" path="res://Scripts/enemy_ranged.gd" id="1_3bg5g"]
 [ext_resource type="Texture2D" uid="uid://cyyanbos6gl3n" path="res://Assets/characters/ranged enemy.png" id="2_5j68v"]
 [ext_resource type="Script" uid="uid://7gpps5mm7cnc" path="res://Scripts/States/state_machine.gd" id="3_htpsb"]
-[ext_resource type="Script" path="res://Scripts/States/enemy_states/enemy_ranged_follow.gd" id="4_t233f"]
-[ext_resource type="Script" path="res://Scripts/States/enemy_states/enemy_ranged_retreat.gd" id="5_5j68v"]
-[ext_resource type="Script" path="res://Scripts/States/enemy_states/enemy_ranged_attack.gd" id="5_kowwf"]
+[ext_resource type="Script" uid="uid://b0mgc02kg6jbt" path="res://Scripts/States/enemy_states/enemy_ranged_follow.gd" id="4_t233f"]
+[ext_resource type="Script" uid="uid://bglb8f73l40vc" path="res://Scripts/States/enemy_states/enemy_ranged_retreat.gd" id="5_5j68v"]
+[ext_resource type="Script" uid="uid://cm1ws4sf4stcf" path="res://Scripts/States/enemy_states/enemy_ranged_attack.gd" id="5_kowwf"]
 [ext_resource type="PackedScene" uid="uid://dip7l8ntmfd5f" path="res://Scenes/attack_area.tscn" id="7_t1bbw"]
 [ext_resource type="PackedScene" uid="uid://bav527wafvxn0" path="res://Scenes/stat_bar.tscn" id="8_g6gig"]
 
