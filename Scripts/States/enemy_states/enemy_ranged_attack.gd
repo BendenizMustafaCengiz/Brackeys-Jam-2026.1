@@ -33,6 +33,7 @@ func physics_update(delta : float) -> void:
 
 func exit() -> void:
 	attack_timer.stop()
+	animation_player.play("RESET")
 
 
 func _on_random_movement_timer_timeout() -> void:

@@ -31,3 +31,7 @@ func choose_random_rot_dir():
 	else:
 		rot_dir = -1
 	rot_degree = randf_range(PI/8,PI/4)
+
+
+func exit() -> void:
+	animation_player.play("RESET")

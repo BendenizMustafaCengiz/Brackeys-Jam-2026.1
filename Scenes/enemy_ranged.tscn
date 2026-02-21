@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://urcq57012env"]
 
-[ext_resource type="Script" path="res://Scripts/enemy_ranged.gd" id="1_3bg5g"]
+[ext_resource type="Script" uid="uid://mhfidpknp1ci" path="res://Scripts/enemy_ranged.gd" id="1_3bg5g"]
 [ext_resource type="Texture2D" uid="uid://cyyanbos6gl3n" path="res://Assets/characters/ranged enemy.png" id="2_5j68v"]
 [ext_resource type="Script" uid="uid://7gpps5mm7cnc" path="res://Scripts/States/state_machine.gd" id="3_htpsb"]
 [ext_resource type="Script" uid="uid://b0mgc02kg6jbt" path="res://Scripts/States/enemy_states/enemy_ranged_follow.gd" id="4_t233f"]

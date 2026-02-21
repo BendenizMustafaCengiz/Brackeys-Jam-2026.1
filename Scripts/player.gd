@@ -11,6 +11,7 @@ var dash_dist :int = 650
 var speed : Vector2 = Vector2.ZERO
 var can_dash: bool = true
 var dash_cooldown : float = 1
+var knockback_mult: float = 500
 
 @export var combo_transition_time : float = 0.5
 @export var dash_cooldown_timer: Timer
@@ -36,6 +37,12 @@ func move(dir : Vector2, delta: float)-> void:
 func hit(amount : int) -> void:
 	pass
 
+
+func knockback(dir : Vector2):
+	var tween: Tween = create_tween()
+	var final_pos = position+ dir*knockback_mult
+	tween.tween_property(self,"position",final_pos,0.3)
+	
 
 func _on_dash_cooldown_timeout() -> void:
 	can_dash = true

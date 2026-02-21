@@ -11,7 +11,7 @@ func _ready() -> void:
 		if child is State:
 			states[child.name.to_lower()] = child
 			child.transitioned.connect(on_child_transitioned)
-	
+			
 	if initial_state:
 		initial_state.enter()
 		current_state = initial_state

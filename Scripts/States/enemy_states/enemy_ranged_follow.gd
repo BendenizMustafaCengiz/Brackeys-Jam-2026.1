@@ -19,3 +19,7 @@ func physics_update(delta : float) -> void:
 	var distance_to_player : float = (player.global_position - enemy.global_position).length()
 	if distance_to_player < enemy.attack_range:
 		transitioned.emit(self, "attack")
+
+
+func exit() -> void:
+	animation_player.play("RESET")
