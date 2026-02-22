@@ -8,12 +8,16 @@
 [ext_resource type="Texture2D" uid="uid://cyme7far1emwm" path="res://Assets/characters/boss/bossv2.png" id="5_koko0"]
 [ext_resource type="Texture2D" uid="uid://csp3t4cqm0odi" path="res://Assets/environment/map.png" id="5_lsb8r"]
 [ext_resource type="Texture2D" uid="uid://b70f2uxh6dqwn" path="res://Assets/characters/enemy1.png" id="6_lsb8r"]
+[ext_resource type="Texture2D" uid="uid://cvubdjp5wthdt" path="res://Assets/step.png" id="7_2nb4t"]
 [ext_resource type="Texture2D" uid="uid://cyyanbos6gl3n" path="res://Assets/characters/ranged enemy.png" id="7_ap3ea"]
+[ext_resource type="Texture2D" uid="uid://b6nqx8ivoiusg" path="res://Assets/strange/iskeletkolu.png" id="8_jb51l"]
 [ext_resource type="Texture2D" uid="uid://dera6r40faio2" path="res://Assets/characters/eyeball/eyeball.png" id="8_t6ver"]
 [ext_resource type="Texture2D" uid="uid://b3hiydh1swr70" path="res://Assets/characters/eyeball/wing.png" id="9_2nb4t"]
-[ext_resource type="Texture2D" uid="uid://dlqdu5pj2r5e0" path="res://Assets/hp bar/frm_green.png" id="10_jb51l"]
-[ext_resource type="Texture2D" uid="uid://8nh5hbc2wf0e" path="res://Assets/hp bar/frm.png" id="11_dxsep"]
+[ext_resource type="Texture2D" uid="uid://cgdyrc3hrbme2" path="res://Assets/strange/kurukafa.png" id="9_jb51l"]
+[ext_resource type="Texture2D" uid="uid://dfht1yroch8ei" path="res://Assets/player_bar/bg.png" id="13_dxsep"]
 [ext_resource type="Texture2D" uid="uid://bh5as1bm5sr0t" path="res://Assets/environment/level_up.png" id="13_lsb8r"]
+[ext_resource type="Texture2D" uid="uid://3rxcjgrx8glv" path="res://Assets/player_bar/green.png" id="14_lexqi"]
+[ext_resource type="Texture2D" uid="uid://bj654xxdoqux4" path="res://Assets/strange/kaburga.png" id="17_pkgwa"]
 
 [sub_resource type="Animation" id="Animation_lexqi"]
 length = 0.001
@@ -244,25 +248,40 @@ Be careful, you can open only up to [color=red]10[/color] doors.
 If you cant find the cause of these strange stuff you are out!"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="part2" unique_id=1122126672]
-offset_left = 426.0
-offset_top = -336.0
-offset_right = 523.0
-offset_bottom = -317.0
-text = "starnge stuff"
-
-[node name="Label2" type="Label" parent="part2" unique_id=1604672873]
-offset_left = 422.0
-offset_top = 268.0
-offset_right = 519.0
-offset_bottom = 287.0
-text = "kapı"
-
 [node name="Bossv2" type="Sprite2D" parent="part2" unique_id=354112928]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(462.99997, -29)
 scale = Vector2(0.6230469, 0.6230469)
 texture = ExtResource("5_koko0")
+
+[node name="Step" type="Sprite2D" parent="part2" unique_id=1758164334]
+position = Vector2(229, 291)
+rotation = 1.8325958
+texture = ExtResource("7_2nb4t")
+
+[node name="Step2" type="Sprite2D" parent="part2" unique_id=1712510327]
+position = Vector2(361, 271)
+rotation = 1.0471976
+texture = ExtResource("7_2nb4t")
+
+[node name="Step3" type="Sprite2D" parent="part2" unique_id=307860396]
+position = Vector2(514, 304)
+rotation = 2.2817624
+texture = ExtResource("7_2nb4t")
+
+[node name="Iskeletkolu" type="Sprite2D" parent="part2" unique_id=90258121]
+position = Vector2(302, -348)
+texture = ExtResource("8_jb51l")
+
+[node name="Kurukafa" type="Sprite2D" parent="part2" unique_id=1235351109]
+position = Vector2(431, -375.00003)
+rotation = -1.3089969
+texture = ExtResource("9_jb51l")
+
+[node name="Kaburga" type="Sprite2D" parent="part2" unique_id=1472543023]
+position = Vector2(529, -322.00003)
+rotation = 1.8325958
+texture = ExtResource("17_pkgwa")
 
 [node name="part3" type="Node2D" parent="." unique_id=981192761]
 modulate = Color(1, 1, 1, 0)
@@ -327,23 +346,24 @@ scale = Vector2(0.83203125, 0.83203125)
 texture = ExtResource("9_2nb4t")
 flip_h = true
 
-[node name="FrmGreen" type="Sprite2D" parent="part3" unique_id=362412973]
-position = Vector2(410.00003, -309.5)
-scale = Vector2(7.843751, 6.90625)
-texture = ExtResource("10_jb51l")
+[node name="Bg" type="Sprite2D" parent="part3" unique_id=1836488569]
+position = Vector2(426, -327)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("13_dxsep")
 
-[node name="Frm" type="Sprite2D" parent="part3" unique_id=1074861853]
-position = Vector2(413.00006, -309.5)
-scale = Vector2(7.7187514, 6.1875)
-texture = ExtResource("11_dxsep")
+[node name="Green" type="Sprite2D" parent="part3" unique_id=1968743246]
+position = Vector2(426, -327)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("14_lexqi")
 
 [node name="Label" type="Label" parent="part3" unique_id=1388649682]
-offset_left = 378.0
-offset_top = -330.5
-offset_right = 462.0
-offset_bottom = -275.5
+offset_left = 380.0
+offset_top = -355.0
+offset_right = 464.0
+offset_bottom = -300.0
+theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 48
-text = "100"
+text = "120"
 
 [node name="LevelUp" type="Sprite2D" parent="part3" unique_id=1972712356]
 position = Vector2(426, 0)

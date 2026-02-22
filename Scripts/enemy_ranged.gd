@@ -25,7 +25,8 @@ func init_stats(room_no: int):
 	retreat_speed = 450
 	damage = 10 + room_no * 3
 	attack_area.damage = damage
-	max_health = 100 + room_no * 20
+	health = 100 + room_no * 20
+	max_health = health
 	knocback_mult = 1.5
 
 func attack(dir: Vector2):
