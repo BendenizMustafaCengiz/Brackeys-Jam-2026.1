@@ -10,6 +10,8 @@ var room : Room
 @export var enemy4 : PackedScene = preload("res://Scenes/enemy_ranged.tscn")
 var avaliable_enemies : Array = [enemy1, enemy2, enemy3, enemy4]
 var enemies : Array = []
+var total_enemies = 0
+var enemies_killed = 0
 @onready var enemies_node: Node2D = $EnemiesNode
 
 @onready var spawn_timer: Timer = $SpawnTimer
@@ -37,7 +39,9 @@ func _ready() -> void:
 		open_doors()
 
 func check_last_enemy()-> void:
-	if enemies_node.get_child_count() == 1 and enemies.size() == 0 and signs.get_child_count() == 0:
+	enemies_killed += 1
+	print('total enemies ', total_enemies, '  enemies killed: ', enemies_killed)
+	if enemies_killed == total_enemies:
 		spawn_timer.paused = true
 		open_doors()
 		upgrade_panel.activate()
@@ -45,6 +49,7 @@ func check_last_enemy()-> void:
 func create_enemies(rooms_cleared: int) -> void:
 	enemies.clear()
 	var enemy_count = 1 + rooms_cleared
+	total_enemies = enemy_count
 	
 	for i in range(enemy_count):
 		var dice = randf_range(0,100)

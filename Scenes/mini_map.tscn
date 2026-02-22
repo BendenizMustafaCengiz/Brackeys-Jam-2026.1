@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://byeha0vj6lood"]
 
 [ext_resource type="Script" uid="uid://v46aprkf41gd" path="res://Scripts/mini_map.gd" id="1_5lser"]
+[ext_resource type="Texture2D" uid="uid://cvubdjp5wthdt" path="res://Assets/step.png" id="2_s1cjf"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_s1cjf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5lser"]
+font_size = 40
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.5568628)
+shadow_offset = Vector2(3, 3)
 
 [node name="MiniMap" type="Node2D" unique_id=145401603]
 script = ExtResource("1_5lser")
@@ -23,3 +30,17 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 texture = SubResource("PlaceholderTexture2D_s1cjf")
+
+[node name="StepLabel" type="Label" parent="CanvasLayer" unique_id=1052349574]
+offset_left = 1608.0
+offset_top = 704.0
+offset_right = 1872.0
+offset_bottom = 768.0
+text = "Steps left: "
+label_settings = SubResource("LabelSettings_5lser")
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=78576485]
+position = Vector2(1576, 736)
+scale = Vector2(0.8125, 0.8125)
+texture = ExtResource("2_s1cjf")

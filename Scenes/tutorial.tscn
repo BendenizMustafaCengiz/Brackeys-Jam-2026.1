@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://jfuj3flpoq8c" path="res://Assets/characters/Player.png" id="1_i6t4g"]
 [ext_resource type="Texture2D" uid="uid://or0pjqges0mb" path="res://Assets/characters/sword.png" id="2_p8jf4"]
 [ext_resource type="Texture2D" uid="uid://oxeykfqg4iet" path="res://Assets/characters/slime_monster.png" id="3_p1f1o"]
-[ext_resource type="PackedScene" path="res://Scenes/floor.tscn" id="4_ys4pu"]
+[ext_resource type="PackedScene" uid="uid://c1jar5bcqfobu" path="res://Scenes/floor.tscn" id="4_ys4pu"]
 [ext_resource type="Texture2D" uid="uid://cyme7far1emwm" path="res://Assets/characters/boss/bossv2.png" id="5_koko0"]
 [ext_resource type="Texture2D" uid="uid://b70f2uxh6dqwn" path="res://Assets/characters/enemy1.png" id="6_lsb8r"]
 [ext_resource type="Texture2D" uid="uid://cyyanbos6gl3n" path="res://Assets/characters/ranged enemy.png" id="7_ap3ea"]

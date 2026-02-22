@@ -20,7 +20,8 @@ var player : Player
 func activate():
 	visible = true
 	var tween = create_tween()
-	tween.tween_property(bg, "modulate", Color(0.286, 0.286, 0.286, 0.733), 0.5)
+	tween.tween_property(bg, "modulate", Color(0.288, 0.288, 0.288, 0.733), 1.5)
+	await tween.finished
 	create_options()
 	
 func close():
@@ -74,14 +75,11 @@ func init_option(option):
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click") and op_container.get_child_count() != 0:
 		if op1.selected:
-			print('op1 selected')
 			op1.upgrade()
 			close()
 		elif op2.selected:
-			print('op2 selected')
 			op2.upgrade()
 			close()
 		elif op3.selected:
-			print('op3 selected')
 			op3.upgrade()
 			close()
