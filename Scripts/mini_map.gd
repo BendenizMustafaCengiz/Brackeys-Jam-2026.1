@@ -14,8 +14,7 @@ var is_mini = true
 @onready var texture_rect: TextureRect = $CanvasLayer/TextureRect
 @onready var step_label: Label = $CanvasLayer/StepLabel
 
-
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("toggle_map"):
 		if is_mini:
 			texture_rect.scale = big_size
@@ -71,3 +70,5 @@ func change_room(dir : String):
 			map.current_room = map.current_room.up_room
 		"down":
 			map.current_room = map.current_room.down_room
+	if map.current_room.visited == false:
+		Save.rooms_cleared += 1

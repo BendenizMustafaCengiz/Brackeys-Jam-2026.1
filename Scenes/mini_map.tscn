@@ -40,7 +40,7 @@ text = "Steps left: "
 label_settings = SubResource("LabelSettings_5lser")
 vertical_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=78576485]
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=78576485]
 position = Vector2(1576, 736)
 scale = Vector2(0.8125, 0.8125)
 texture = ExtResource("2_s1cjf")

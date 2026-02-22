@@ -32,7 +32,7 @@ func close():
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
-	if player and player.can_dash :
+	if Stats.cur_can_dash:
 		max_index -= 1
 
 func create_options():
@@ -76,10 +76,13 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click") and op_container.get_child_count() != 0:
 		if op1.selected:
 			op1.upgrade()
+			player.init_stats()
 			close()
 		elif op2.selected:
 			op2.upgrade()
+			player.init_stats()
 			close()
 		elif op3.selected:
 			op3.upgrade()
+			player.init_stats()
 			close()
