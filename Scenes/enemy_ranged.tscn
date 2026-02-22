@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cm1ws4sf4stcf" path="res://Scripts/States/enemy_states/enemy_ranged_attack.gd" id="5_kowwf"]
 [ext_resource type="PackedScene" uid="uid://dip7l8ntmfd5f" path="res://Scenes/attack_area.tscn" id="7_t1bbw"]
 [ext_resource type="PackedScene" uid="uid://bav527wafvxn0" path="res://Scenes/stat_bar.tscn" id="8_g6gig"]
+[ext_resource type="AudioStream" uid="uid://cyoryr3b00pgo" path="res://SFX/ranged_enemy_attack.ogg" id="9_78sx7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t233f"]
 size = Vector2(108, 103)
@@ -192,7 +193,7 @@ shape = SubResource("RectangleShape2D_t233f")
 [node name="StateMachine" type="Node" parent="." unique_id=1071155965 node_paths=PackedStringArray("initial_state", "state_label")]
 script = ExtResource("3_htpsb")
 initial_state = NodePath("follow")
-state_label = NodePath("../Label")
+state_label = NodePath("")
 
 [node name="follow" type="Node" parent="StateMachine" unique_id=566969481 node_paths=PackedStringArray("enemy", "animation_player")]
 script = ExtResource("4_t233f")
@@ -218,13 +219,6 @@ libraries/ = SubResource("AnimationLibrary_kowwf")
 
 [node name="random_movement_timer" type="Timer" parent="." unique_id=1770659748]
 
-[node name="Label" type="Label" parent="." unique_id=367921579]
-visible = false
-offset_left = -17.0
-offset_top = 68.0
-offset_right = 23.0
-offset_bottom = 87.0
-
 [node name="shooting_pos" type="Marker2D" parent="." unique_id=1191220714]
 position = Vector2(-7, 9)
 
@@ -241,6 +235,10 @@ offset_right = -59.0
 offset_bottom = -96.0
 low_hp_pulse = false
 damage_shake = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1321449151]
+stream = ExtResource("9_78sx7")
+volume_db = -5.0
 
 [connection signal="timeout" from="attack_timer" to="StateMachine/attack" method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="random_movement_timer" to="StateMachine/attack" method="_on_random_movement_timer_timeout"]

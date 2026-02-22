@@ -279,7 +279,7 @@ shape = SubResource("CapsuleShape2D_x3wgy")
 [node name="StateMachine" type="Node" parent="." unique_id=2099382809 node_paths=PackedStringArray("initial_state", "state_label")]
 script = ExtResource("3_6t5aa")
 initial_state = NodePath("idle")
-state_label = NodePath("../debug_label")
+state_label = NodePath("")
 
 [node name="idle" type="Node" parent="StateMachine" unique_id=1475001488 node_paths=PackedStringArray("player", "animation_player")]
 script = ExtResource("4_vgqql")
@@ -332,13 +332,6 @@ speed_scale = 2.5
 
 [node name="comboTransitionTimer" type="Timer" parent="." unique_id=1049058610]
 one_shot = true
-
-[node name="debug_label" type="Label" parent="." unique_id=690072866]
-visible = false
-offset_left = -31.0
-offset_top = 84.0
-offset_right = 9.0
-offset_bottom = 107.0
 
 [node name="dashTimer" type="Timer" parent="." unique_id=705886418]
 wait_time = 0.3

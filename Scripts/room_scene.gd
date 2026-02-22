@@ -198,6 +198,7 @@ func game_over():
 	die_screen.activate()
 
 func open_doors() -> void:
+	$door_sound.play()
 	print("doors opening")
 	
 	var tween = create_tween()

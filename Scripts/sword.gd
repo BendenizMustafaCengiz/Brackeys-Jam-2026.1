@@ -4,10 +4,12 @@ class_name Sword
 var damage : int = 20
 var dash_dmg: int = 30
 var final_dmg: int = 30
-const ATT1KB: int = 20
-const ATT2KB: int = 20
-const ATT3KB: int = 50
-var kb_mult: float = 1.0
+const ATT1KB: int = 1
+const ATT2KB: int = 1
+const ATT3KB: int = 2
+var kb_mult: float = 0.01
+
+@onready var audio: AudioStreamPlayer2D = $"1"
 
 func init_stats():
 	dash_dmg = damage * 2
@@ -31,6 +33,8 @@ func _process(_delta: float) -> void:
 
 
 func attack1():
+	audio.pitch_scale = randf_range(1,1.2)
+	audio.play()
 	enemiesJustHit.clear()
 	attacking = true
 	animation_player.play("slash1")
@@ -40,6 +44,8 @@ func attack1():
 		hit_enemy(enemy,damage,ATT1KB)
 	
 func attack2():
+	audio.pitch_scale = randf_range(0.9,1.1)
+	audio.play()
 	if animation_player.is_animation_active():
 		await animation_player.animation_finished
 	enemiesJustHit.clear()
@@ -51,6 +57,8 @@ func attack2():
 		hit_enemy(enemy,damage,ATT2KB)
 
 func attack3():
+	audio.pitch_scale = randf_range(0.8,0.9)
+	audio.play()
 	if animation_player.is_animation_active():
 		await animation_player.animation_finished
 	enemiesJustHit.clear()
@@ -62,6 +70,8 @@ func attack3():
 		hit_enemy(enemy, final_dmg, ATT3KB)
 
 func dash_attack():
+	audio.pitch_scale = randf_range(0.9,1.2)
+	audio.play()
 	enemiesJustHit.clear()
 	attacking = true
 	animation_player.play("dash")

@@ -1,6 +1,7 @@
 extends Control
 
 @onready var player: Player = $Player
+@onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 func _ready() -> void:
@@ -18,6 +19,7 @@ func _on_quit_button_2_pressed() -> void:
 
 
 func _on_play_button_pressed() -> void:
+	audio.play()
 	if Save.played_tutorial:
 		ChangeScene.change_scene("res://Scenes/room_scene.tscn")
 	else:

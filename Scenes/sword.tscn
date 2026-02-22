@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bpejgvdsna31j" path="res://Scripts/sword.gd" id="1_goa0h"]
 [ext_resource type="Texture2D" uid="uid://or0pjqges0mb" path="res://Assets/characters/sword.png" id="2_6wdhb"]
+[ext_resource type="AudioStream" uid="uid://bqjybx1b7wknv" path="res://SFX/sword_slash3.wav" id="3_d6wag"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6wdhb"]
 size = Vector2(251, 76)
@@ -262,6 +263,11 @@ rotation = 1.5707964
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_6wdhb")
 offset = Vector2(20, -350)
+
+[node name="1" type="AudioStreamPlayer2D" parent="." unique_id=224886019]
+stream = ExtResource("3_d6wag")
+volume_db = -10.765
+bus = &"SFX"
 
 [connection signal="body_entered" from="slashArea1" to="." method="_on_slash_area_1_body_entered"]
 [connection signal="body_exited" from="slashArea1" to="." method="_on_slash_area_1_body_exited"]

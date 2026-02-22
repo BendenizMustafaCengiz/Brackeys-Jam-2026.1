@@ -6,6 +6,7 @@ var min_range: int # bu rangein içine girersen geri kaç
 var retreat_speed: int 
 @onready var shooting_pos: Marker2D = $shooting_pos
 const PROJ : PackedScene = preload("res://Scenes/projectile.tscn")
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
@@ -30,6 +31,7 @@ func init_stats(room_no: int):
 	knocback_mult = 1.5
 
 func attack(dir: Vector2):
+	audio_stream_player_2d.play()
 	var new_proj = PROJ.instantiate()
 	new_proj.global_position = shooting_pos.global_position
 	shooting_pos.add_child(new_proj)

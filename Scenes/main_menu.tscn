@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://donvxbr3w6hgn" path="res://Assets/environment/better_bg.png" id="1_28flt"]
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_ce3w2"]
 [ext_resource type="PackedScene" uid="uid://c8eh4pqxs4pdn" path="res://Scenes/player.tscn" id="3_1ehe0"]
+[ext_resource type="AudioStream" uid="uid://bwv2555wtvipn" path="res://SFX/button.ogg" id="4_ce3w2"]
 
 [node name="main menu" type="Control" unique_id=1620144287]
 layout_mode = 3
@@ -75,14 +76,18 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 54
 theme_override_font_sizes/normal_font_size = 128
 bbcode_enabled = true
-text = "GAME  TITLE
-LOOKING FOR THE WEIRD"
+text = "LOOKING FOR THE VEIRDO"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player" parent="." unique_id=946385579 instance=ExtResource("3_1ehe0")]
 position = Vector2(1488, 599)
 scale = Vector2(1.5, 1.5)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=677819973]
+stream = ExtResource("4_ce3w2")
+volume_db = -5.0
+bus = &"SFX"
 
 [connection signal="pressed" from="QuitButton2" to="." method="_on_quit_button_2_pressed"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
