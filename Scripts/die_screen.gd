@@ -3,6 +3,7 @@ extends Node2D
 
 @onready var game_over_text: RichTextLabel = $CanvasLayer/GameOverText
 @onready var bg: TextureRect = $CanvasLayer/BG
+@onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func activate() -> void:
 	canvas_layer.visible = true
@@ -11,10 +12,12 @@ func activate() -> void:
 
 func _on_try_again_button_pressed() -> void:
 	ChangeScene.change_scene("res://Scenes/room_scene.tscn")
+	audio.play()
 
 func _on_main_menu_button_pressed() -> void:
 	Save.reset()
 	Stats.reset()
 	ChangeScene.change_scene("res://Scenes/main_menu.tscn")
+	audio.play()
 	
 	

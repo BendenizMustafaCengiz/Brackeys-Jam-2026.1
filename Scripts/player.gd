@@ -29,7 +29,7 @@ func init_stats():
 	sword.damage = Stats.cur_damage
 	max_health = Stats.cur_max_health
 	health = max_health
-	knockback_mult = Stats.cur_knockback_mult
+	sword.kb_mult = Stats.cur_knockback_mult
 	can_dash = Stats.cur_can_dash
 
 func _physics_process(_delta: float) -> void:

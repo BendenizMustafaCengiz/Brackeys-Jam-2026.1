@@ -2,12 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dataddg4u2hlm" path="res://Scripts/room_scene.gd" id="1_gw577"]
 [ext_resource type="PackedScene" uid="uid://c8eh4pqxs4pdn" path="res://Scenes/player.tscn" id="1_q8hp3"]
-[ext_resource type="PackedScene" uid="uid://c1jar5bcqfobu" path="res://Scenes/floor.tscn" id="2_e80bh"]
+[ext_resource type="PackedScene" path="res://Scenes/floor.tscn" id="2_e80bh"]
 [ext_resource type="PackedScene" uid="uid://byeha0vj6lood" path="res://Scenes/mini_map.tscn" id="4_4ih6r"]
 [ext_resource type="Texture2D" uid="uid://w4nv8ltjioui" path="res://Assets/environment/door_better.png" id="5_0ud7s"]
 [ext_resource type="PackedScene" uid="uid://b4sp8rsrbx4q1" path="res://Scenes/die_screen.tscn" id="5_ltrk6"]
 [ext_resource type="PackedScene" uid="uid://djh3qnny6ycji" path="res://Scenes/upgrade_panel.tscn" id="6_gmo20"]
 [ext_resource type="Texture2D" uid="uid://drpniwjogmvj3" path="res://Assets/environment/BG_final.png" id="7_grewx"]
+[ext_resource type="AudioStream" uid="uid://d2gwkl6l8855q" path="res://SFX/door-opening.wav" id="9_0ud7s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e80bh"]
 size = Vector2(64, 256)
@@ -168,6 +169,11 @@ offset_top = -1400.0
 offset_right = 1400.0
 offset_bottom = 1400.0
 texture = ExtResource("7_grewx")
+
+[node name="door_sound" type="AudioStreamPlayer2D" parent="." unique_id=1880320485]
+stream = ExtResource("9_0ud7s")
+volume_db = -5.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="Exits/Right Exit" to="." method="_on_right_exit_body_entered"]
 [connection signal="body_entered" from="Exits/Left Exit" to="." method="_on_left_exit_body_entered"]

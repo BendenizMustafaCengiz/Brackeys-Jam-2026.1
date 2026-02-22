@@ -1,5 +1,6 @@
 extends State
 class_name BossMelee
+@export var melee_audio: AudioStreamPlayer2D
 
 @export var boss: CharacterBody2D
 @export var animation_player: AnimationPlayer
@@ -10,5 +11,6 @@ func enter() -> void:
 		player = get_tree().get_first_node_in_group("player")
 	animation_player.play("melee")
 	await animation_player.animation_finished
+	melee_audio.play()
 	boss.melee_damage()
 	transitioned.emit(self, "wait")

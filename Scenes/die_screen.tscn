@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b4sp8rsrbx4q1"]
 
 [ext_resource type="Script" uid="uid://bfnxw2cebuwtc" path="res://Scripts/die_screen.gd" id="1_dbgas"]
+[ext_resource type="AudioStream" uid="uid://bwv2555wtvipn" path="res://SFX/button.ogg" id="2_3y4r8"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_qt6in"]
 
@@ -62,6 +63,10 @@ theme_override_colors/font_hover_color = Color(0.78431374, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 36
 text = "Main Menu"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2115387445]
+stream = ExtResource("2_3y4r8")
+volume_db = -5.0
 
 [connection signal="pressed" from="CanvasLayer/TryAgainButton" to="." method="_on_try_again_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
