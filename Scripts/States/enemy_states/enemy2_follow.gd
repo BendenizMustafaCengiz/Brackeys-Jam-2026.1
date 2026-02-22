@@ -10,7 +10,7 @@ var player: Player
 
 
 func enter() -> void:
-	follow_timer.start(enemy.follow_time)
+	follow_timer.start(randf_range(4,6))
 	animation_player.play("follow")
 	if ! player:
 		player = get_tree().get_first_node_in_group("player")

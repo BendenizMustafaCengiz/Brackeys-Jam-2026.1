@@ -19,6 +19,9 @@ func _ready() -> void:
 	
 
 func die():
+	set_collision_layer_value(1, false)
+	set_collision_mask_value(1, false)
+	
 	get_parent().get_parent().check_last_enemy()
 	
 	laser.enabled = false
