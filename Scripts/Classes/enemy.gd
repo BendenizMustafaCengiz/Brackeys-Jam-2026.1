@@ -8,6 +8,7 @@ var HPBar : Control
 var attack_area : Area2D
 var knocback_mult: float
 
+
 func hurt(amount : int, kb_dir: Vector2, kb: float):
 	health = health - amount
 	
