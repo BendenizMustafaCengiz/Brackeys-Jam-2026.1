@@ -41,7 +41,7 @@ func attack2():
 	enemiesJustHit.clear()
 	attacking = true
 	animation_player.play("slash2")
-	for enemy in enemiesInAtt1Range:
+	for enemy in enemiesInAtt2Range:
 		if enemiesJustHit.has(enemy):
 			continue
 		hit_enemy(enemy,damage,ATT2KB)
@@ -52,7 +52,7 @@ func attack3():
 	enemiesJustHit.clear()
 	attacking = true
 	animation_player.play("slash3")
-	for enemy in enemiesInAtt1Range:
+	for enemy in enemiesInAtt3Range:
 		if enemiesJustHit.has(enemy):
 			continue
 		hit_enemy(enemy, final_dmg, ATT3KB)
@@ -61,7 +61,7 @@ func dash_attack():
 	enemiesJustHit.clear()
 	attacking = true
 	animation_player.play("dash")
-	for enemy in enemiesInAtt1Range:
+	for enemy in enemiesInDashRange:
 		if enemiesJustHit.has(enemy):
 			continue
 		hit_enemy(enemy, dash_dmg, ATT3KB)
@@ -105,7 +105,7 @@ func _on_slash_area_2_body_entered(body: Node2D) -> void:
 func _on_slash_area_2_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		return
-	enemiesInAtt1Range.erase(body)
+	enemiesInAtt2Range.erase(body)
 
 
 func _on_slash_area_3_body_entered(body: Node2D) -> void:
@@ -122,7 +122,7 @@ func _on_slash_area_3_body_entered(body: Node2D) -> void:
 func _on_slash_area_3_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		return
-	enemiesInAtt1Range.erase(body)
+	enemiesInAtt3Range.erase(body)
 
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
@@ -143,7 +143,7 @@ func _on_dash_area_body_entered(body: Node2D) -> void:
 func _on_dash_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		return
-	enemiesInAtt1Range.erase(body)
+	enemiesInDashRange.erase(body)
 
 
 func hit_enemy(enemy: CharacterBody2D,dmg: int, kb: int):

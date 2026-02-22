@@ -15,13 +15,6 @@ func _ready() -> void:
 	
 
 
-func inint_stats(_room_no: int):
-	speed = 300
-	damage = 100
-	health = 5000
-	max_health = health
-
-
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
