@@ -11,11 +11,13 @@ func activate() -> void:
 	tween.tween_property(bg,"modulate", Color(0.0, 0.0, 0.0, 0.588), 2.0)
 
 func _on_try_again_button_pressed() -> void:
-	#Zorluk ve map reseti vs vs.
 	ChangeScene.change_scene("res://Scenes/room_scene.tscn")
 	audio.play()
 
 func _on_main_menu_button_pressed() -> void:
-	#Zorluk ve map reseti vs vs.
+	Save.reset()
+	Stats.reset()
 	ChangeScene.change_scene("res://Scenes/main_menu.tscn")
 	audio.play()
+	
+	
