@@ -4,15 +4,19 @@ extends Node2D
 @onready var mini_map: Node2D = $MiniMap
 var room : Room
 
+@export var boss : PackedScene = preload("res://Scenes/boss.tscn")
+
 @export var enemy1 : PackedScene = preload("res://Scenes/worm.tscn")
 @export var enemy2 : PackedScene = preload("res://Scenes/enemy_2.tscn")
 @export var enemy3 : PackedScene = preload("res://Scenes/eye_ball.tscn")
 @export var enemy4 : PackedScene = preload("res://Scenes/enemy_ranged.tscn")
+
 var avaliable_enemies : Array = [enemy1, enemy2, enemy3, enemy4]
 var enemies : Array = []
 var total_enemies = 0
 var enemies_killed = 0
 @onready var enemies_node: Node2D = $EnemiesNode
+
 
 @onready var spawn_timer: Timer = $SpawnTimer
 
@@ -29,12 +33,16 @@ static var init_player_pos : Vector2 = Vector2(0,0)
 
 
 func _ready() -> void:
+	print('boss room: ',Save.map.boss_room_pos)
 	player.position = init_player_pos
 	player.init_stats()
-	create_enemies(Save.rooms_cleared)
 	room = mini_map.map.current_room
-	print(room.map_pos)
-	if not room.visited:
+	if room.is_boss_room:
+		create_boss()
+	else:
+		create_enemies(Save.rooms_cleared)
+	
+	if not room.visited and not room.is_boss_room:
 		spawn_timer.start()
 	else:
 		open_doors()
@@ -47,6 +55,14 @@ func check_last_enemy()-> void:
 		open_doors()
 		upgrade_panel.activate()
 		room.visited = true
+
+func create_boss():
+	enemies.clear()
+	
+	var boss_instance = boss.instantiate()
+	enemies.append(boss_instance)
+	
+	enemies_node.add_child(boss_instance)
 
 func create_enemies(rooms_cleared: int) -> void:
 	enemies.clear()
