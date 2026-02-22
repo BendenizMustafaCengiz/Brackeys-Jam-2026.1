@@ -26,9 +26,9 @@ func init_stats():
 	max_speed = Stats.cur_max_speed
 	sword.damage = Stats.cur_damage
 	max_health = Stats.cur_max_health
+	health = max_health
 	knockback_mult = Stats.cur_knockback_mult
 	can_dash = Stats.cur_can_dash
-	print(max_speed, "  ", sword.damage)
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()

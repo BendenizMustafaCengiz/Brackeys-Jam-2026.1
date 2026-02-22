@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+var max_health: int = 1000
 var health: int = 1000
 var speed: int = 300
 var damage: int = 50
@@ -9,6 +10,7 @@ const safe_range = 500
 var is_player_in_melee_range :bool = false
 var player : Player
 @export var attack_area: Area2D
+@onready var stat_bar: StatBar = $CanvasLayer/StatBar
 
 func _ready() -> void:
 	attack_area.damage = 20 #rastgele verdim normalden fazla olsun diye sen kafana göre değiştir
@@ -39,6 +41,7 @@ func _on_melee_attack_area_body_exited(body: Node2D) -> void:
 
 func hurt(amount : int, _kb_dir: Vector2, _kb: float):
 	health = health - amount
+	stat_bar.update_bar(health, max_health)
 	
 	if health <= 0:
 		die()

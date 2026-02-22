@@ -45,7 +45,7 @@ theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 5
 theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
-text = "[wave]R o o m    C l e a r e d"
+text = "[wave] r o o m    i s    c l e a r e d"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -13,9 +13,9 @@
 [ext_resource type="Script" uid="uid://bv76smgnrh1yl" path="res://Scripts/States/boss_states/boss_summon.gd" id="10_q76ad"]
 [ext_resource type="PackedScene" uid="uid://dip7l8ntmfd5f" path="res://Scenes/attack_area.tscn" id="12_lel8w"]
 [ext_resource type="Script" uid="uid://nqd41ojam7v8" path="res://Scripts/hp_bar.gd" id="13_hbq6j"]
-[ext_resource type="Texture2D" uid="uid://dte8hgfuopwba" path="res://Assets/characters/boss/bg.png" id="14_hbq6j"]
-[ext_resource type="Texture2D" uid="uid://ddm8jsx71tsv2" path="res://Assets/characters/boss/white.png" id="15_ursto"]
-[ext_resource type="Texture2D" uid="uid://bf4wn2cgyxobt" path="res://Assets/characters/boss/blue.png" id="16_lo233"]
+[ext_resource type="Texture2D" uid="uid://blcjqpgdwfor1" path="res://Assets/characters/boss/boss_bar1.png" id="14_ursto"]
+[ext_resource type="Texture2D" uid="uid://ids6mtwuat2q" path="res://Assets/characters/boss/boss_bar_white.png" id="15_lo233"]
+[ext_resource type="Texture2D" uid="uid://nal02neh8bq8" path="res://Assets/characters/boss/boss_bar_red.png" id="16_c3eom"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ukjjc"]
 size = Vector2(149, 263)
@@ -348,12 +348,6 @@ radius = 363.03442
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6xjeg"]
 size = Vector2(176, 284)
 
-[sub_resource type="LabelSettings" id="LabelSettings_hbq6j"]
-font_size = 64
-shadow_size = 10
-shadow_color = Color(0, 0, 0, 0.81960785)
-shadow_offset = Vector2(0, 5)
-
 [node name="Boss" type="CharacterBody2D" unique_id=686628583 node_paths=PackedStringArray("attack_area")]
 motion_mode = 1
 script = ExtResource("1_wwfse")
@@ -448,14 +442,9 @@ shape = SubResource("RectangleShape2D_6xjeg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1658344192]
 
-[node name="StatBar" type="Control" parent="CanvasLayer" unique_id=834999668 node_paths=PackedStringArray("back_bar", "front_bar")]
+[node name="StatBar" type="Control" parent="." unique_id=834999668 node_paths=PackedStringArray("back_bar", "front_bar")]
 texture_filter = 1
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1920.0
-offset_bottom = -1080.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
@@ -464,39 +453,28 @@ back_bar = NodePath("BackBar")
 front_bar = NodePath("FrontBar")
 is_health = true
 
-[node name="BackBar" type="TextureProgressBar" parent="CanvasLayer/StatBar" unique_id=1827930947]
+[node name="BackBar" type="TextureProgressBar" parent="StatBar" unique_id=1827930947]
 texture_filter = 1
 layout_mode = 0
-offset_left = 576.0
-offset_top = 976.0
-offset_right = 840.0
-offset_bottom = 1032.0
-scale = Vector2(3, 2)
+offset_left = 728.0
+offset_top = 1000.0
+offset_right = 984.0
+offset_bottom = 1064.0
+scale = Vector2(1.8, 1.2)
 value = 100.0
-texture_under = ExtResource("14_hbq6j")
-texture_over = ExtResource("14_hbq6j")
-texture_progress = ExtResource("15_ursto")
+texture_under = ExtResource("14_ursto")
+texture_over = ExtResource("14_ursto")
+texture_progress = ExtResource("15_lo233")
 
-[node name="FrontBar" type="TextureProgressBar" parent="CanvasLayer/StatBar" unique_id=939395340]
+[node name="FrontBar" type="TextureProgressBar" parent="StatBar" unique_id=939395340]
 layout_mode = 0
-offset_left = 576.0
-offset_top = 976.0
-offset_right = 832.0
-offset_bottom = 1040.0
-scale = Vector2(3, 2)
+offset_left = 728.0
+offset_top = 1000.0
+offset_right = 984.0
+offset_bottom = 1064.0
+scale = Vector2(1.8, 1.2)
 value = 100.0
-texture_progress = ExtResource("16_lo233")
-
-[node name="Label" type="Label" parent="CanvasLayer/StatBar" unique_id=769292119]
-layout_mode = 0
-offset_left = 832.0
-offset_top = 920.0
-offset_right = 1084.0
-offset_bottom = 993.0
-text = "Veirdo"
-label_settings = SubResource("LabelSettings_hbq6j")
-horizontal_alignment = 1
-vertical_alignment = 1
+texture_progress = ExtResource("16_c3eom")
 
 [connection signal="timeout" from="WaitTimer" to="StateMachine/wait" method="_on_wait_timer_timeout"]
 [connection signal="timeout" from="FollowTimer" to="StateMachine/follow" method="_on_follow_timer_timeout"]

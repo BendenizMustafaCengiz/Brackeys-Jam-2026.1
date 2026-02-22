@@ -12,6 +12,7 @@ var big_pos = Vector2(568, 152)
 var is_mini = true
 
 @onready var texture_rect: TextureRect = $CanvasLayer/TextureRect
+@onready var step_label: Label = $CanvasLayer/StepLabel
 
 
 func _process(delta: float) -> void:
@@ -39,19 +40,19 @@ func generate_minimap() -> void:
 			
 			var room_color = Color.DIM_GRAY
 			if rooms[i][j].visited == true or rooms[i][j] == map.current_room:
-				room_color = Color.CORNFLOWER_BLUE
+				room_color = Color.DEEP_SKY_BLUE
 			
 			map_image.fill_rect(Rect2i(x, y, room_size, room_size), room_color)
 			
 			if map.current_room == rooms[i][j]:
-				room_color = Color.DARK_ORANGE
+				room_color = Color.DARK_RED
 				@warning_ignore("integer_division")
 				map_image.fill_rect(Rect2i(x + room_size/4, y + 2 * room_size / 5 , room_size / 2, room_size / 5), room_color)
 				@warning_ignore("integer_division")
 				map_image.fill_rect(Rect2i(x + 2 * room_size / 5, y+room_size / 4 , room_size / 5, room_size / 2), room_color)
-
 	
 	texture_rect.texture = ImageTexture.create_from_image(map_image)
+	step_label.text = str("steps left: ", (10 - Save.rooms_cleared))
 
 
 func _ready() -> void:

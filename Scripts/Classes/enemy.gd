@@ -21,12 +21,12 @@ func hurt(amount : int, kb_dir: Vector2, kb: float):
 	var final_pos = global_position + kb_dir * kb * knocback_mult
 	var tween: Tween = create_tween()
 	tween.tween_property(self, "global_position", final_pos, 0.2)
-	
-	
-	
 
 
 func die():
+	set_collision_layer_value(1, false)
+	set_collision_mask_value(1, false)
+	
 	get_parent().get_parent().check_last_enemy()
 	
 	speed = 0
