@@ -27,6 +27,7 @@ static var init_player_pos : Vector2 = Vector2(0,0)
 @onready var die_screen: Node2D = $DieScreen
 @onready var upgrade_panel: UpgradePanel = $UpgradePanel
 
+
 func _ready() -> void:
 	player.position = init_player_pos
 	player.init_stats()
@@ -45,6 +46,7 @@ func check_last_enemy()-> void:
 		spawn_timer.paused = true
 		open_doors()
 		upgrade_panel.activate()
+		room.visited = true
 
 func create_enemies(rooms_cleared: int) -> void:
 	enemies.clear()
@@ -123,7 +125,6 @@ func _on_right_exit_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		mini_map.change_room("right")
 		init_player_pos = Vector2(-900,0)
-		Save.rooms_cleared += 1
 		ChangeScene.change_scene("res://Scenes/room_scene.tscn")
 
 #Left exit
@@ -133,7 +134,6 @@ func _on_left_exit_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		ChangeScene.change_scene("res://Scenes/room_scene.tscn")
 		mini_map.change_room("left")
-		Save.rooms_cleared += 1
 		init_player_pos = Vector2(900,0)
 
 #Down exit
@@ -143,7 +143,6 @@ func _on_down_exit_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		ChangeScene.change_scene("res://Scenes/room_scene.tscn")
 		mini_map.change_room("down")
-		Save.rooms_cleared += 1
 		init_player_pos = Vector2(0,-900)
 
 #Up exit
@@ -153,7 +152,6 @@ func _on_up_exit_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		ChangeScene.change_scene("res://Scenes/room_scene.tscn")
 		mini_map.change_room("up")
-		Save.rooms_cleared += 1
 		init_player_pos = Vector2(0,900)
 
 func game_over():
@@ -161,8 +159,6 @@ func game_over():
 
 func open_doors() -> void:
 	print("doors opening")
-	
-	room.visited = true
 	
 	var tween = create_tween()
 	tween.set_parallel(true)
