@@ -20,6 +20,33 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ukjjc"]
 size = Vector2(149, 263)
 
+[sub_resource type="Animation" id="Animation_hbq6j"]
+resource_name = "Die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.6, 0.6), Vector2(2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.4509804, 0.4509804, 0.4509804, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_odcco"]
 length = 0.001
 tracks/0/type = "value"
@@ -334,6 +361,7 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n725y"]
 _data = {
+&"Die": SubResource("Animation_hbq6j"),
 &"RESET": SubResource("Animation_odcco"),
 &"disappear": SubResource("Animation_q76ad"),
 &"melee": SubResource("Animation_nuv35"),
@@ -365,6 +393,7 @@ modulate = Color(1, 1, 1, 0)
 texture = ExtResource("2_nuv35")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1434359248]
+visible = false
 position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_ukjjc")
 
@@ -421,6 +450,7 @@ animation_player = NodePath("../../AnimationPlayer")
 libraries/ = SubResource("AnimationLibrary_n725y")
 
 [node name="Label" type="Label" parent="." unique_id=1472270660]
+visible = false
 offset_right = 40.0
 offset_bottom = 19.0
 
@@ -442,6 +472,7 @@ shape = SubResource("CircleShape2D_42olf")
 top_level = true
 
 [node name="AttackArea" parent="." unique_id=150417490 instance=ExtResource("12_lel8w")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=348421648]
 shape = SubResource("RectangleShape2D_6xjeg")

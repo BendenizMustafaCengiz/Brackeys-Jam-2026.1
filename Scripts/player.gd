@@ -12,6 +12,9 @@ var speed : Vector2 = Vector2.ZERO
 var can_dash: bool = true
 var dash_cooldown : float = 1
 var knockback_mult: float = 500
+var died = false
+
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var health := 100
 var max_health := 100
@@ -31,6 +34,7 @@ func init_stats():
 	health = max_health
 	knockback_mult = Stats.cur_knockback_mult
 	can_dash = Stats.cur_can_dash
+	sword.init_stats()
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
@@ -58,7 +62,11 @@ func hit(amount : int) -> void:
 	health_bar.update_bar(health, max_health)
 
 func die():
-	get_parent().game_over()
+	if not died:
+		max_speed = 0
+		animation_player.play("die")
+		get_parent().game_over()
+		died = true
 
 func knockback(dir : Vector2):
 	var tween: Tween = create_tween()

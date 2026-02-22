@@ -15,7 +15,7 @@ func _ready() -> void:
 func init_stats(room_no: int):
 	speed = 250
 	dash_speed = 700
-	damage = 20 + room_no * 2
+	damage = 15 + room_no * 2
 	health = 150 + room_no * 10
 	max_health = health
 	attack_area.damage = damage

@@ -23,9 +23,9 @@ func init_stats(room_no: int):
 	wide_range = 700
 	min_range = 300
 	retreat_speed = 450
-	damage = 10 + room_no * 3
+	damage = 10 + room_no * 2
 	attack_area.damage = damage
-	health = 100 + room_no * 20
+	health = 100 + room_no * 15
 	max_health = health
 	knocback_mult = 1.5
 

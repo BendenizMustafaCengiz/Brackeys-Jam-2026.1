@@ -219,6 +219,7 @@ libraries/ = SubResource("AnimationLibrary_kowwf")
 [node name="random_movement_timer" type="Timer" parent="." unique_id=1770659748]
 
 [node name="Label" type="Label" parent="." unique_id=367921579]
+visible = false
 offset_left = -17.0
 offset_top = 68.0
 offset_right = 23.0
@@ -235,9 +236,9 @@ shape = SubResource("RectangleShape2D_t1bbw")
 
 [node name="StatBar" parent="." unique_id=834999668 instance=ExtResource("8_g6gig")]
 offset_left = -59.0
-offset_top = -87.0
+offset_top = -96.0
 offset_right = -59.0
-offset_bottom = -87.0
+offset_bottom = -96.0
 low_hp_pulse = false
 damage_shake = false
 

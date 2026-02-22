@@ -9,6 +9,10 @@ const ATT2KB: int = 20
 const ATT3KB: int = 50
 var kb_mult: float = 1.0
 
+func init_stats():
+	dash_dmg = damage * 2
+	final_dmg = damage * 1.5
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 var attacking: bool = false
 @onready var sprite: Sprite2D = $Sprite2D

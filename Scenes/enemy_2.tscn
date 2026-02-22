@@ -221,6 +221,7 @@ speed_scale = 0.8
 [node name="wait_timer" type="Timer" parent="." unique_id=78115057]
 
 [node name="Label" type="Label" parent="." unique_id=1171847331]
+visible = false
 offset_left = -19.0
 offset_top = 102.0
 offset_right = 21.0
