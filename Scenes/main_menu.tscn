@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://67rjc1sb0a8r"]
+
+[ext_resource type="Texture2D" uid="uid://donvxbr3w6hgn" path="res://Assets/environment/better_bg.png" id="1_28flt"]
+[ext_resource type="Script" uid="uid://b2ryngoq2pqd" path="res://Scripts/main_menu.gd" id="1_ce3w2"]
+[ext_resource type="PackedScene" uid="uid://c8eh4pqxs4pdn" path="res://Scenes/player.tscn" id="3_1ehe0"]
+
+[node name="main menu" type="Control" unique_id=1620144287]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ce3w2")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1842801513]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1250.0
+offset_top = -1250.0
+offset_right = 1250.0
+offset_bottom = 1250.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_28flt")
+
+[node name="QuitButton2" type="Button" parent="." unique_id=2008441883]
+layout_mode = 0
+offset_left = 1585.0
+offset_top = 891.0
+offset_right = 1777.0
+offset_bottom = 987.0
+focus_mode = 0
+theme_override_colors/font_pressed_color = Color(0.31820002, 0.6556399, 0.74, 1)
+theme_override_colors/font_hover_color = Color(0.4, 0.8235294, 0.92941177, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.4, 0.8235294, 0.92941177, 1)
+theme_override_font_sizes/font_size = 36
+text = "QUIT"
+
+[node name="PlayButton" type="Button" parent="." unique_id=301926621]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = 87.0
+offset_right = 204.0
+offset_bottom = 294.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_colors/font_pressed_color = Color(0.3268, 0.6733599, 0.76, 1)
+theme_override_colors/font_hover_color = Color(0.4, 0.8235294, 0.92941177, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.4, 0.8235294, 0.92941177, 1)
+theme_override_font_sizes/font_size = 72
+text = "PLAY"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1607692686]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -950.0
+offset_right = 951.0
+offset_bottom = 454.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.39990002, 0.82397985, 0.93, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 54
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "GAME  TITLE
+LOOKING FOR THE WEIRD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" parent="." unique_id=946385579 instance=ExtResource("3_1ehe0")]
+position = Vector2(1488, 599)
+scale = Vector2(1.5, 1.5)
+
+[connection signal="pressed" from="QuitButton2" to="." method="_on_quit_button_2_pressed"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

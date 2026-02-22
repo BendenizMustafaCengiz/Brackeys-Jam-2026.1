@@ -6,7 +6,7 @@
 [node name="mustafa_deneme" type="Node" unique_id=1994785618]
 
 [node name="Player" parent="." unique_id=946385579 instance=ExtResource("1_8wtqn")]
-position = Vector2(269, 457)
+position = Vector2(200, 439)
 
 [node name="Boss" parent="." unique_id=686628583 instance=ExtResource("2_8wtqn")]
 position = Vector2(1169, 522)
