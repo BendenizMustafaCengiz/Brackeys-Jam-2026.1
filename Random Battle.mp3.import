@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b5ohp6lofounj"
+path="res://.godot/imported/Random Battle.mp3-dcf3e826b292966c45b49801988e94f5.mp3str"
+
+[deps]
+
+source_file="res://Random Battle.mp3"
+dest_files=["res://.godot/imported/Random Battle.mp3-dcf3e826b292966c45b49801988e94f5.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

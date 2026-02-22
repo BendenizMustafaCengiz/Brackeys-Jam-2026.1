@@ -44,6 +44,7 @@ func _ready() -> void:
 	room = mini_map.map.current_room
 	if room.is_boss_room:
 		create_boss()
+		Music.play_boss()
 	else:
 		create_enemies(Save.rooms_cleared)
 	handle_stranges()

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://vbm3lqpv3yo1"]
+
+[ext_resource type="Script" uid="uid://mdn1qxupgp48" path="res://Scripts/music.gd" id="1_476t3"]
+[ext_resource type="AudioStream" uid="uid://bv1x4f223qt85" path="res://01 game-game_0.ogg" id="1_qxpp0"]
+[ext_resource type="AudioStream" uid="uid://b5ohp6lofounj" path="res://Random Battle.mp3" id="2_476t3"]
+
+[node name="Node" type="Node" unique_id=1212330967]
+script = ExtResource("1_476t3")
+
+[node name="main music" type="AudioStreamPlayer" parent="." unique_id=920464695]
+stream = ExtResource("1_qxpp0")
+volume_db = -20.0
+autoplay = true
+
+[node name="boss music" type="AudioStreamPlayer" parent="." unique_id=885590532]
+stream = ExtResource("2_476t3")
+volume_db = -20.0

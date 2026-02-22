@@ -190,10 +190,9 @@ texture = ExtResource("2_5j68v")
 position = Vector2(-4, 4.5)
 shape = SubResource("RectangleShape2D_t233f")
 
-[node name="StateMachine" type="Node" parent="." unique_id=1071155965 node_paths=PackedStringArray("initial_state", "state_label")]
+[node name="StateMachine" type="Node" parent="." unique_id=1071155965 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_htpsb")
 initial_state = NodePath("follow")
-state_label = NodePath("")
 
 [node name="follow" type="Node" parent="StateMachine" unique_id=566969481 node_paths=PackedStringArray("enemy", "animation_player")]
 script = ExtResource("4_t233f")
