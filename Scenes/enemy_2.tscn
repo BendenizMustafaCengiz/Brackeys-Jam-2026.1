@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://d2rbav3fv86b1" path="res://Scripts/States/enemy_states/enemy2_wait.gd" id="6_8n4gd"]
 [ext_resource type="PackedScene" uid="uid://dip7l8ntmfd5f" path="res://Scenes/attack_area.tscn" id="7_pfsys"]
 [ext_resource type="PackedScene" uid="uid://bav527wafvxn0" path="res://Scenes/stat_bar.tscn" id="8_plxki"]
+[ext_resource type="AudioStream" uid="uid://bl22l7kkja2ts" path="res://SFX/dash.mp3" id="9_0o7g4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pfsys"]
 size = Vector2(126, 119)
@@ -193,7 +194,7 @@ offset = Vector2(0, 40)
 [node name="StateMachine" type="Node" parent="." unique_id=2010685923 node_paths=PackedStringArray("initial_state", "state_label")]
 script = ExtResource("2_48bj6")
 initial_state = NodePath("follow")
-state_label = NodePath("../Label")
+state_label = NodePath("")
 
 [node name="follow" type="Node" parent="StateMachine" unique_id=596724296 node_paths=PackedStringArray("follow_timer", "enemy", "animation_player")]
 script = ExtResource("4_qit8y")
@@ -201,10 +202,11 @@ follow_timer = NodePath("../../follow_timer")
 enemy = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="dash" type="Node" parent="StateMachine" unique_id=59242544 node_paths=PackedStringArray("enemy", "animation_player")]
+[node name="dash" type="Node" parent="StateMachine" unique_id=59242544 node_paths=PackedStringArray("enemy", "animation_player", "audio_stream_player_2d")]
 script = ExtResource("5_4gdgy")
 enemy = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
+audio_stream_player_2d = NodePath("../../AudioStreamPlayer2D")
 
 [node name="wait" type="Node" parent="StateMachine" unique_id=1806156417 node_paths=PackedStringArray("enemy", "animation_player", "wait_timer")]
 script = ExtResource("6_8n4gd")
@@ -220,12 +222,6 @@ speed_scale = 0.8
 
 [node name="wait_timer" type="Timer" parent="." unique_id=78115057]
 
-[node name="Label" type="Label" parent="." unique_id=1171847331]
-offset_left = -19.0
-offset_top = 102.0
-offset_right = 21.0
-offset_bottom = 121.0
-
 [node name="AttackArea" parent="." unique_id=150417490 instance=ExtResource("7_pfsys")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1883155144]
@@ -239,6 +235,12 @@ offset_right = -59.0
 offset_bottom = -108.0
 low_hp_pulse = false
 damage_shake = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1161086913]
+stream = ExtResource("9_0o7g4")
+volume_db = -5.0
+pitch_scale = 1.5
+bus = &"SFX"
 
 [connection signal="timeout" from="follow_timer" to="StateMachine/follow" method="_on_follow_time_timeout"]
 [connection signal="timeout" from="wait_timer" to="StateMachine/wait" method="_on_wait_timer_timeout"]

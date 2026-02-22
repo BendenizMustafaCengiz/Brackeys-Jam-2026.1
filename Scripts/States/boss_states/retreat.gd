@@ -1,5 +1,6 @@
 extends State
 class_name BossRetreat
+@export var disappear_audio: AudioStreamPlayer2D
 
 @export var collision_shape_2d: CollisionShape2D
 @export var boss: CharacterBody2D
@@ -10,6 +11,7 @@ Vector2(800,-800),Vector2(-800,-800)]
 const damage_area = preload("res://Scenes/damage_area.tscn")
 
 func enter() -> void:
+	disappear_audio.play()
 	if !player:
 		player = get_tree().get_first_node_in_group("player")
 	animation_player.play("disappear")

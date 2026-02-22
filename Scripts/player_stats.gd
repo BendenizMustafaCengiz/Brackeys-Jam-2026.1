@@ -9,7 +9,7 @@ const init_can_dash = false
 var cur_damage := 20
 var cur_max_health := 100
 var cur_max_speed := 600
-var cur_knockback_mult := 500
+var cur_knockback_mult := 1.0
 var cur_can_dash := false
 
 func reset()-> void:

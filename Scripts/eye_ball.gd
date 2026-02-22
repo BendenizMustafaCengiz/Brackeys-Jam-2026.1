@@ -10,6 +10,7 @@ var is_in_cooldown = false
 
 @onready var laser: RayCast2D = $Laser
 @onready var attack_timer: Timer = $AttackTimer
+@onready var laser_sound: AudioStreamPlayer2D = $laser_sound
 
 func _ready() -> void:
 	HPBar = $StatBar
@@ -82,6 +83,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func attack() -> void:
+	laser_sound.play()
 	attack_timer.start()
 	is_attacking = true
 	is_in_cooldown = true
@@ -96,7 +98,7 @@ func attack() -> void:
 	var plus_minus_one = 2 * randi_range(0,1) - 1
 	tween.tween_property(self, "rotation_degrees", rotation_needed + 30 * plus_minus_one, 4.0).from(rotation_needed - 30 * plus_minus_one)
 	await tween.finished
-	
+	laser_sound.stop()
 	is_attacking = false
 	laser.set_is_casting(false)
 	
@@ -105,3 +107,4 @@ func attack() -> void:
 
 func _on_attack_timer_timeout() -> void:
 	is_in_cooldown = false
+	

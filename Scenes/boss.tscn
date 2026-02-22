@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://dte8hgfuopwba" path="res://Assets/characters/boss/bg.png" id="14_hbq6j"]
 [ext_resource type="Texture2D" uid="uid://ddm8jsx71tsv2" path="res://Assets/characters/boss/white.png" id="15_ursto"]
 [ext_resource type="Texture2D" uid="uid://bf4wn2cgyxobt" path="res://Assets/characters/boss/blue.png" id="16_lo233"]
+[ext_resource type="AudioStream" uid="uid://0gjli2bssobo" path="res://SFX/boss_disappear.wav" id="17_ursto"]
+[ext_resource type="AudioStream" uid="uid://cxpopcvusya6b" path="res://SFX/boss_melee.wav" id="18_lo233"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ukjjc"]
 size = Vector2(149, 263)
@@ -400,13 +402,15 @@ boss = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 attack_timer = NodePath("../../AttackTimer")
 
-[node name="melee" type="Node" parent="StateMachine" unique_id=1724010415 node_paths=PackedStringArray("boss", "animation_player")]
+[node name="melee" type="Node" parent="StateMachine" unique_id=1724010415 node_paths=PackedStringArray("melee_audio", "boss", "animation_player")]
 script = ExtResource("5_n725y")
+melee_audio = NodePath("../../melee_audio")
 boss = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="retreat" type="Node" parent="StateMachine" unique_id=516345977 node_paths=PackedStringArray("collision_shape_2d", "boss", "animation_player")]
+[node name="retreat" type="Node" parent="StateMachine" unique_id=516345977 node_paths=PackedStringArray("disappear_audio", "collision_shape_2d", "boss", "animation_player")]
 script = ExtResource("7_qtle2")
+disappear_audio = NodePath("../../disappear_audio")
 collision_shape_2d = NodePath("../../CollisionShape2D")
 boss = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
@@ -497,6 +501,15 @@ text = "Veirdo"
 label_settings = SubResource("LabelSettings_hbq6j")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="disappear_audio" type="AudioStreamPlayer2D" parent="." unique_id=702430503]
+stream = ExtResource("17_ursto")
+volume_db = -5.0
+
+[node name="melee_audio" type="AudioStreamPlayer2D" parent="." unique_id=355390738]
+stream = ExtResource("18_lo233")
+volume_db = -5.0
+bus = &"SFX"
 
 [connection signal="timeout" from="WaitTimer" to="StateMachine/wait" method="_on_wait_timer_timeout"]
 [connection signal="timeout" from="FollowTimer" to="StateMachine/follow" method="_on_follow_timer_timeout"]

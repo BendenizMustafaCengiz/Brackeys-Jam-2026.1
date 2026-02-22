@@ -6,8 +6,10 @@ class_name Enemy2Dash
 var player: Player
 var dash_dir: Vector2  
 var curr_dash_dist : float = 0
+@export var audio_stream_player_2d: AudioStreamPlayer2D
 
 func enter() -> void:
+	audio_stream_player_2d.play()
 	if ! player:
 		player = get_tree().get_first_node_in_group("player")
 	dash_dir = (player.global_position - enemy.global_position).normalized()
