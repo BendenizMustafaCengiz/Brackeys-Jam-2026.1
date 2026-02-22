@@ -20,7 +20,7 @@ func _ready() -> void:
 func init_stats(rooms_cleared : int) -> void:
 	damage = rooms_cleared * 1 + 5
 	speed = 300
-	health = rooms_cleared * 5 + 40
+	health = rooms_cleared * 5 + 30
 	max_health = health
 	attack_area.damage = damage
 	knocback_mult = 1.5

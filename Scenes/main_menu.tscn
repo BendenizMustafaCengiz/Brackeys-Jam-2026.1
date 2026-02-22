@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://67rjc1sb0a8r"]
 
 [ext_resource type="Texture2D" uid="uid://donvxbr3w6hgn" path="res://Assets/environment/better_bg.png" id="1_28flt"]
-[ext_resource type="Script" uid="uid://b2ryngoq2pqd" path="res://Scripts/main_menu.gd" id="1_ce3w2"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_ce3w2"]
 [ext_resource type="PackedScene" uid="uid://c8eh4pqxs4pdn" path="res://Scenes/player.tscn" id="3_1ehe0"]
 [ext_resource type="AudioStream" uid="uid://bwv2555wtvipn" path="res://SFX/button.ogg" id="4_ce3w2"]
 

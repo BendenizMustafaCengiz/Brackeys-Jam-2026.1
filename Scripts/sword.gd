@@ -11,6 +11,10 @@ var kb_mult: float = 0.01
 
 @onready var audio: AudioStreamPlayer2D = $"1"
 
+func init_stats():
+	dash_dmg = damage * 2
+	final_dmg = damage * 1.5
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 var attacking: bool = false
 @onready var sprite: Sprite2D = $Sprite2D

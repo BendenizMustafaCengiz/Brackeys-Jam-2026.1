@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://wggu72pyv2j5" path="res://Scenes/sword.tscn" id="6_x3wgy"]
 [ext_resource type="Script" uid="uid://nv2c8cjbl00c" path="res://Scripts/States/player_states/attack_2.gd" id="7_8erm5"]
 [ext_resource type="Script" uid="uid://bnqudjme7vfd4" path="res://Scripts/States/player_states/attack_3.gd" id="8_f1ek2"]
-[ext_resource type="Script" uid="uid://fiv4b37v7rtd" path="res://Scripts/States/player_states/do_nothing.gd" id="10_h4iuc"]
+[ext_resource type="Script" path="res://Scripts/States/player_states/do_nothing.gd" id="10_h4iuc"]
 [ext_resource type="Script" uid="uid://nqd41ojam7v8" path="res://Scripts/hp_bar.gd" id="11_h4iuc"]
 [ext_resource type="Texture2D" uid="uid://dfht1yroch8ei" path="res://Assets/player_bar/bg.png" id="12_7dp3o"]
 [ext_resource type="Texture2D" uid="uid://ckb08p1a4ob12" path="res://Assets/player_bar/white.png" id="13_h4iuc"]

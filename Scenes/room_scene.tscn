@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://b4sp8rsrbx4q1" path="res://Scenes/die_screen.tscn" id="5_ltrk6"]
 [ext_resource type="PackedScene" uid="uid://djh3qnny6ycji" path="res://Scenes/upgrade_panel.tscn" id="6_gmo20"]
 [ext_resource type="Texture2D" uid="uid://drpniwjogmvj3" path="res://Assets/environment/BG_final.png" id="7_grewx"]
+[ext_resource type="Texture2D" uid="uid://bi5sjpw80cvfl" path="res://Assets/strange/bosskafası.png" id="9_0ud7s"]
+[ext_resource type="Texture2D" uid="uid://b6nqx8ivoiusg" path="res://Assets/strange/iskeletkolu.png" id="10_w8y1i"]
+[ext_resource type="Texture2D" uid="uid://bj654xxdoqux4" path="res://Assets/strange/kaburga.png" id="11_3ll66"]
+[ext_resource type="Texture2D" uid="uid://cgdyrc3hrbme2" path="res://Assets/strange/kurukafa.png" id="12_rsix7"]
 [ext_resource type="AudioStream" uid="uid://d2gwkl6l8855q" path="res://SFX/door-opening.wav" id="9_0ud7s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e80bh"]
@@ -38,6 +42,7 @@ size = Vector2(384, 64)
 script = ExtResource("1_gw577")
 
 [node name="MapBorders" type="StaticBody2D" parent="." unique_id=2057759491]
+visible = false
 collision_layer = 3
 
 [node name="upper" type="CollisionPolygon2D" parent="MapBorders" unique_id=1473455321]
@@ -170,6 +175,156 @@ offset_right = 1400.0
 offset_bottom = 1400.0
 texture = ExtResource("7_grewx")
 
+[node name="Strange1" type="Node2D" parent="." unique_id=2096239226]
+visible = false
+z_index = -100
+
+[node name="Sprite2D" type="Sprite2D" parent="Strange1" unique_id=1613980125]
+position = Vector2(-272, 456.00003)
+rotation = -0.42586035
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("9_0ud7s")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Strange1" unique_id=73469140]
+position = Vector2(704, -191.99998)
+rotation = -0.27227136
+scale = Vector2(0.6, 0.6)
+skew = 0.15707964
+texture = ExtResource("12_rsix7")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Strange1" unique_id=1560230978]
+position = Vector2(-688.00006, -728)
+rotation = 0.23212878
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_rsix7")
+
+[node name="Strange2" type="Node2D" parent="." unique_id=1092801928]
+visible = false
+z_index = -100
+
+[node name="Sprite2D" type="Sprite2D" parent="Strange2" unique_id=2142446925]
+position = Vector2(423.99997, -536)
+rotation = 0.42586035
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("10_w8y1i")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Strange2" unique_id=1750030405]
+position = Vector2(504.00003, -496)
+rotation = -5.305801
+scale = Vector2(-0.8, 0.8)
+texture = ExtResource("10_w8y1i")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Strange2" unique_id=835276519]
+position = Vector2(407.99997, -448)
+rotation = -2.549926
+scale = Vector2(0.5595248, 0.5595248)
+texture = ExtResource("12_rsix7")
+
+[node name="Strange3" type="Node2D" parent="." unique_id=67426417]
+visible = false
+z_index = -100
+
+[node name="Sprite2D" type="Sprite2D" parent="Strange3" unique_id=113881727]
+position = Vector2(-432, -119.99996)
+rotation = 0.13962634
+texture = ExtResource("11_3ll66")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Strange3" unique_id=692340415]
+position = Vector2(-376, -120.000015)
+rotation = -0.2565634
+scale = Vector2(-0.8, -0.8)
+texture = ExtResource("10_w8y1i")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Strange3" unique_id=2018166839]
+position = Vector2(-448, -176.00002)
+rotation = -0.25307274
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_rsix7")
+flip_h = true
+
+[node name="Strange4" type="Node2D" parent="." unique_id=887500744]
+visible = false
+z_index = -100
+
+[node name="Sprite2D" type="Sprite2D" parent="Strange4" unique_id=258648594]
+position = Vector2(-808, -423.99997)
+rotation = 0.17453292
+scale = Vector2(0.31249994, 0.31249994)
+texture = ExtResource("12_rsix7")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Strange4" unique_id=1831316862]
+position = Vector2(800, 400)
+rotation = 0.17453292
+scale = Vector2(0.31249994, 0.31249994)
+texture = ExtResource("12_rsix7")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Strange4" unique_id=397101418]
+position = Vector2(407.99997, -448)
+rotation = -2.549926
+scale = Vector2(0.5595248, 0.5595248)
+texture = ExtResource("12_rsix7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Strange4" unique_id=798532149]
+position = Vector2(96, -320)
+rotation = -0.34906584
+scale = Vector2(0.31249994, 0.31249994)
+texture = ExtResource("12_rsix7")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Strange4" unique_id=2039534346]
+position = Vector2(296, 464)
+rotation = 2.443461
+scale = Vector2(0.31249994, 0.31249994)
+texture = ExtResource("12_rsix7")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Strange4" unique_id=1086211147]
+position = Vector2(-828, 772)
+scale = Vector2(0.31249994, 0.31249994)
+texture = ExtResource("12_rsix7")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Strange4" unique_id=1564205249]
+position = Vector2(-812, 788)
+scale = Vector2(0.31249994, 0.31249994)
+texture = ExtResource("12_rsix7")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Strange4" unique_id=691919850]
+position = Vector2(-827.99994, 796)
+scale = Vector2(0.31249994, 0.31249994)
+texture = ExtResource("12_rsix7")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Strange4" unique_id=1574498259]
+position = Vector2(-844, 788)
+scale = Vector2(0.31249994, 0.31249994)
+texture = ExtResource("12_rsix7")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Strange4" unique_id=1068672383]
+position = Vector2(-836, 804)
+scale = Vector2(0.31249994, 0.31249994)
+texture = ExtResource("12_rsix7")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Strange4" unique_id=631301142]
+position = Vector2(-811.99994, 804)
+scale = Vector2(0.31249994, 0.31249994)
+texture = ExtResource("12_rsix7")
+
+[node name="Sprite2D12" type="Sprite2D" parent="Strange4" unique_id=1060792809]
+position = Vector2(-852, 812)
+scale = Vector2(0.31249994, 0.31249994)
+texture = ExtResource("12_rsix7")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Strange4" unique_id=385844052]
+position = Vector2(-836, 820)
+scale = Vector2(0.31249994, 0.31249994)
+texture = ExtResource("12_rsix7")
+
+[node name="Sprite2D14" type="Sprite2D" parent="Strange4" unique_id=532704347]
+position = Vector2(-819.99994, 820)
+scale = Vector2(0.31249994, 0.31249994)
+texture = ExtResource("12_rsix7")
+
+[node name="Sprite2D15" type="Sprite2D" parent="Strange4" unique_id=1386792056]
+position = Vector2(-803.99994, 820)
+scale = Vector2(0.31249994, 0.31249994)
+texture = ExtResource("12_rsix7")
 [node name="door_sound" type="AudioStreamPlayer2D" parent="." unique_id=1880320485]
 stream = ExtResource("9_0ud7s")
 volume_db = -5.0

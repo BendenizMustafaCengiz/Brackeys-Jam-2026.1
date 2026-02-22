@@ -11,6 +11,7 @@ var is_player_in_melee_range :bool = false
 var player : Player
 @export var attack_area: Area2D
 @onready var stat_bar: StatBar = $CanvasLayer/StatBar
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
 	attack_area.damage = 20 #rastgele verdim normalden fazla olsun diye sen kafana göre değiştir
@@ -50,4 +51,7 @@ func check_last_enemy():
 	pass
 
 func die():
+	animation_player.play("Die")
+	await animation_player.animation_finished
 	queue_free()
+	ChangeScene.change_scene("res://Scenes/WinScreen.tscn")

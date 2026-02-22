@@ -31,6 +31,11 @@ static var init_player_pos : Vector2 = Vector2(0,0)
 @onready var die_screen: Node2D = $DieScreen
 @onready var upgrade_panel: UpgradePanel = $UpgradePanel
 
+@onready var strange_1: Node2D = $Strange1
+@onready var strange_2: Node2D = $Strange2
+@onready var strange_3: Node2D = $Strange3
+@onready var strange_4: Node2D = $Strange4
+var stranges = [strange_1,strange_2,strange_3,strange_4]
 
 func _ready() -> void:
 	print('boss room: ',Save.map.boss_room_pos)
@@ -41,11 +46,30 @@ func _ready() -> void:
 		create_boss()
 	else:
 		create_enemies(Save.rooms_cleared)
+	handle_stranges()
 	
 	if not room.visited and not room.is_boss_room:
 		spawn_timer.start()
-	else:
+	elif not room.is_boss_room:
 		open_doors()
+
+func handle_stranges():
+	stranges = [strange_1,strange_2,strange_3,strange_4]
+	stranges.shuffle()
+	
+	var boss_pos := Save.map.boss_room_pos
+	var cur_pos := Save.map.current_room.map_pos
+	
+	var distance = abs(boss_pos.x - cur_pos.x) + abs(boss_pos.y - cur_pos.y)
+	
+	if distance <= 3:
+		stranges[0].visible = true
+	if distance <= 2:
+		stranges[1].visible = true
+	if distance <= 1:
+		stranges[2].visible = true
+	if distance <= 0:
+		stranges[3].visible = true
 
 func check_last_enemy()-> void:
 	enemies_killed += 1
@@ -66,7 +90,7 @@ func create_boss():
 
 func create_enemies(rooms_cleared: int) -> void:
 	enemies.clear()
-	var enemy_count = 1 + rooms_cleared
+	var enemy_count = 10 + rooms_cleared * 2
 	total_enemies = enemy_count
 	
 	for i in range(enemy_count):
