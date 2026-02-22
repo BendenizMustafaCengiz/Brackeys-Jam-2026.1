@@ -6,3 +6,7 @@ var played_tutorial : bool = false
 
 func _ready() -> void:
 	map = Map.new()
+
+func reset():
+	map = Map.new()
+	rooms_cleared = 0
