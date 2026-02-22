@@ -22,6 +22,8 @@ var max_health := 100
 @export var combo_transition_time : float = 0.5
 @export var dash_cooldown_timer: Timer
 
+@onready var state_machine: Node = $StateMachine
+
 func init_stats():
 	max_speed = Stats.cur_max_speed
 	sword.damage = Stats.cur_damage
@@ -66,3 +68,7 @@ func knockback(dir : Vector2):
 
 func _on_dash_cooldown_timeout() -> void:
 	can_dash = true
+
+
+func make_static() -> void: #ana menüde oynamasın diye
+	state_machine.change_state("donothing")

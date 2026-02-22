@@ -5,6 +5,9 @@ var canchange = true
 
 var clicks: int = 0
 
+func _ready() -> void:
+	Save.played_tutorial = true
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if canchange:
